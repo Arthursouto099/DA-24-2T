@@ -47,7 +47,7 @@ console.log(typeof idadeDoUser)
 
 h1.innerText = `Olá ${nomeDoUser}, Tenha um ótimo dia!`
 
-button.addEventListener("click", () => {
+button.addEventListener("click", () => { 
     if(div.classList.contains("body-white")) {
         div.classList.remove("body-white")
         div.classList.add("body-black")
@@ -59,6 +59,12 @@ button.addEventListener("click", () => {
         div.classList.add("body-white")
     }
 })
+
+
+
+
+
+
 
 
 
