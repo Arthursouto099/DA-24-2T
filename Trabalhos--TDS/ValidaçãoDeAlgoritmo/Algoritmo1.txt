@@ -1,0 +1,29 @@
+ALGORITMO PAR OU IMPAR: 
+
+CONCEITO BASE -->
+
+O algoritmo(1) deve receber um numero do usuario e descobrir se esse numero e par ou impar. 
+
+SAIDA ESPERADA -->
+
+CASO 1 -->
+O usuario envia o numero  4, o algoritmo guarda esse numero dentro de uma variavel {numeroDoUser} e faz a verificação retornando ao usuario 
+a seguinte mensagem "O numero do usuario(numeroDoUser) é par"
+
+CASO 2 --> 
+O usuario envia o numero  3, o algoritmo guarda esse numero dentro de uma variavel {numeroDoUser} e faz a verificação retornando ao usuario 
+a seguinte mensagem "O numero do usuario(numeroDoUser) é impar"
+
+CASO 3 -->  
+O usuario envia um texto(String), logo o algoritmo reconhece como NaN(Not a Number) e sempre vai retornar impar, pois NaN não se encaixa na verificação, uma vez que o algoritmo não compara o tipo da variavel. Uma solução seria fazer uma atualização no algoritmo onde ele faz uma verificação do tipo e o conteudo da varivel e so executa caso o tipo da variavel for igual ao numero. 
+
+CASO 4 --> 
+O usuario envia o numero  -445, o algoritmo guarda esse numero dentro de uma variavel {numeroDoUser} e faz a verificação retornando ao usuario 
+a seguinte mensagem "O numero do usuario(numeroDoUser) é impar"
+
+CASO 5 --> 
+O usuario não envia nenhum numero, por consequencia o valor do usuario acabar por ser igual a zero, com isso o algoritmo entende que ele é um numero par e 
+retorna a seguinte mensagem "O numero do usuario(numeroDoUser) é par"
+
+
+
