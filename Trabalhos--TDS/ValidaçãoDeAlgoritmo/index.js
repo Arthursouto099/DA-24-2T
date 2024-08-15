@@ -8,8 +8,6 @@ const nomeDoUser = prompt("Digite seu nome: ")
 // O comando prompt naturalmente entrega a resposta do cliente como uma string. com o metodo Number convertemos essa string para number
 const numeroDoUser = Number(prompt("Digite um numero: "))
 
-alert(typeof numeroDoUser)
-alert(numeroDoUser)
 
 
 /* Verificando se o resto da divisão do numero por 2 é igual a 0
