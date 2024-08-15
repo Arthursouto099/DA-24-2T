@@ -15,7 +15,7 @@ O usuario envia o numero  3, o algoritmo guarda esse numero dentro de uma variav
 a seguinte mensagem "O numero do usuario(numeroDoUser) é impar"
 
 CASO 3 -->  
-O usuario envia um texto(String), logo o algoritmo reconhece como NaN(Not a Number) e sempre vai retornar impar, pois NaN não se encaixa na verificação, uma vez que o algoritmo não compara o tipo da variavel. Uma solução seria fazer uma atualização no algoritmo onde ele faz uma verificação do tipo e o conteudo da varivel e so executa caso o tipo da variavel for igual ao numero. 
+O usuario envia um texto(String), logo o algoritmo reconhece como NaN(Not a Number) e sempre vai retornar impar, pois NaN não se encaixa na verificação, uma vez que o algoritmo não compara o tipo da variavel. Uma solução seria fazer uma atualização no algoritmo para previnir e impossibilitar o usuario de enviar requisições que não são numeros ou inteiros
 
 CASO 4 --> 
 O usuario envia o numero  -445, o algoritmo guarda esse numero dentro de uma variavel {numeroDoUser} e faz a verificação retornando ao usuario 
@@ -27,3 +27,25 @@ retorna a seguinte mensagem "O numero do usuario(numeroDoUser) é par"
 
 
 
+Resultados ---->
+
+
+Resultado 1 -->
+
+No primeiro resultado aconteceu exatamente como o caso 1 explicava, o algoritmo reconheceu 4 como um numero par uma vez que o resto da divisão de 4 por 2 = 0, {4 % 2 = 0}
+
+Resultado 2 -->
+
+No segundo resultado, ocorreu tudo como esperado, enviamos o numero 3 e o algoritmo fez a verificação e retornou que o numero 3 é impar {3 % 2 =  1, diferente de 0, != 0}
+
+Resultado 3 --> 
+
+No terceiro resultado o algoritmo reconheceu a string como NaN, ou seja "not a number", como NaN não se encaixa como numero ele sempre vai cair no else "NaN é impar" já que o algoritmo não compara os tipos da variavel, se NaN % 2 é diferente de 0 o algoritmo acaba por entender que NaN é impar. Uma solução seria fazer uma função que checa o tipo da variavel, caso ela seja diferente de "Number" o programa se encerra, caso o contrário ele avança para a verificação. Outra solução e impossibilitar o usuario de digitar Strings ou numeros que não sejam inteiros.
+
+Resultado 4 --> 
+
+Novamente o algoritmo funcionou e passou no teste, enviamos um numero negativo -445 e o algoritmo fez a verificação {-445 % 2 = -1}, ou seja impar
+
+Resultado 5 -->
+
+Não enviamos nenhum número por tanto o valor da variavel recebeu 0 ,como valor e 0 é considerado par por está entre o 1 e o -1, o algoritmo respondeu como esperado. 

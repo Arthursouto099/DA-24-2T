@@ -19,8 +19,9 @@ if(numeroDoUser % 2 === 0) {
     alert(`O número ${numeroDoUser} é par`)
 }
 
+
 else {
-  alert(`O número ${numeroDoUser} é impar-`)
+  alert(`O número ${numeroDoUser} é impar`)
 }
 
 
