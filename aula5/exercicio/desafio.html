@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+
+        * {
+            padding: 0px;
+            margin: 0px;
+            background-color: #95af33;
+            color: white;
+            font-family: sans-serif;
+        }
+        
+        h2 {
+            text-align: center;
+            padding: 20px;
+        }
+        
+
+        .form {
+            display:  flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form label {
+            display: flex;
+            flex-direction: column;
+        }
+     
+        label {
+            padding: 20px;
+        }
+
+        label input {
+            border-radius: 30px;
+            border: 1px solid rgb(255, 255, 255);
+            padding: 2px;
+            text-align: center;
+            outline: none;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 400px;
+            margin: auto;
+
+        }
+
+        .button button {
+            border-radius: 20px;
+            padding: 8px;
+            margin-right: 10PX;
+            border-style: none;
+            border: 1px solid rgb(203, 203, 203);
+        }
+
+        .button button:hover {
+            transform: scale(1.1);
+            transition: 1.5s;
+            cursor: pointer;
+            background-color: #b8c38d;
+        }
+
+        .resultado {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>OPERADORES LÓGICOS</h2>
+
+      <div class="form">
+        <label for=""> 
+            DIGITE UM NÚMERO
+            <input id="1" type="number">
+          </label>
+          <label for=""> DIGITE UM NÚMERO
+            <input id="2" type="number">
+          </label>
+      </div>
+      
+    
+       <div class="button">
+        <button id="somar">SOMAR</button>
+        <button id="subtrair">SUBTRAIR</button>
+        <button id="dividir">DIVIDIR</button>
+        <button id="multiplicar">MULTIPLICAR</button>
+       </div>
+
+       <div class="resultado">
+        <h1></h1>
+       </div>
+      
+
+
+    <script src="desafio.js"></script>
+</body>
+</html>
