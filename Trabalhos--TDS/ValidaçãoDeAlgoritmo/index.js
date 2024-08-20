@@ -3,7 +3,7 @@
 
 
 const nomeDoUser = prompt("Digite seu nome: ")
-// verificar se o numero e par ou impar
+// verificar se o numero é par ou impar
 
 // O comando prompt naturalmente entrega a resposta do cliente como uma string. com o metodo Number convertemos essa string para number
 const numeroDoUser = Number(prompt("Digite um numero: "))
