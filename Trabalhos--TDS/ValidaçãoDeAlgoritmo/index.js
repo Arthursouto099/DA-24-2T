@@ -26,12 +26,17 @@ else {
 
 
 // Converter graus celcius em fahrenheit
-const grausDoUser = Number(prompt("Digite uma temperatura em celcius: "))
-const tempEmFahrenheit = (grausDoUser * 1.8) + 32
+const grausEmC = Number(prompt("Digite a temperatura: /Celcius: "))
 
+const converterParaF = (grausEmC) * (9/5) + 32
+alert(` A temperatura do user em C: ${nomeDoUser} ==> { C${grausEmC} } para FAHRENHEIT é {F ${converterParaF.toFixed(0)}}`)
 /*
+FORMULA 1
 Celsius → Fahrenheit
 Multiplicamos a temperatura em ºC por 1,8 e somamos 32 ao resultado.
+
+FORMULA 2 
+F = (C) X (9/5) + 32
 */
 
 alert(`A  temperatura do user: ${nomeDoUser} ==> { ${grausDoUser} celcius } convertida para fahrenheit é ${tempEmFahrenheit.toFixed(0)} fahrenheit`)
