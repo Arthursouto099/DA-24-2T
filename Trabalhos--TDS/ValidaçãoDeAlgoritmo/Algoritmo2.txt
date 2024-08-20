@@ -1,0 +1,40 @@
+ALGORITOMO CELCIUS EM FAHRENHEIT 
+
+CONCEITO BASE ->
+
+ o algoritmo(1) deve receber um numero do usuário em célsius e transforma em fahrenheit
+
+SAIDA ESPERADA ->
+
+CASO 1 ->
+ o usuário envia numero 0, o algoritmo guarda esse numero dentro de uma variável {grauDoUser} e o algoritmo faz a verificação retornado ao usuário a seguinte mensagem " A  temperatura do user { j ==> 0 graus celcius } convertida para fahrenheit é 32 fahrenheit "
+
+
+CASO 2 ->
+ o usuário envia numero 8, o algoritmo guarda esse numero dentro de uma variável {grauDoUser} e o algoritmo faz a verificação retornado ao usuário a seguinte mensagem " A  temperatura do user { k ==> 8 graus celcius } convertida para fahrenheit é 46 fahrenheit "
+
+
+CASO 3 ->
+ o usuário envia a letra M, o algoritmo guarda essa letra dentro de uma variável {grauDoUser} e o algoritmo faz a verificação retornado ao usuário a seguinte mensagem " A  temperatura do user { j ==> NaN graus celcius } convertida para fahrenheit é NaN fahrenheit "
+
+
+CASO 4 ->
+ o usuário envia numero 300, o algoritmo guarda esse numero dentro de uma variável {grauDoUser} e o algoritmo faz a verificação retornado ao usuário a seguinte mensagem " o numero do usuário em fahrenheit é {tempEmFahrenheit} "
+
+
+CASO 5 ->
+ o usuário envia numero -55, o algoritmo guarda esse numero dentro de uma variável {grauDoUser} e o algoritmo faz a verificação retornado ao usuário a seguinte mensagem " A  temperatura do user { ç ==> -55 graus celcius } convertida para fahrenheit é -67 fahrenhei "
+
+
+resultados ----> 
+
+
+No primeiro resultado aconteceu exatamente como o caso 1 explicava, o algoritmo reconheceu 0 e o multiploca por 1.8 e depois soma mais 32, e depois retorna a seguinte mensagem: "A  temperatura do user { h ==> 0 graus celcius } convertida para fahrenheit é 32 fahrenheit"
+
+No seguando resultado aconteceu exatamente como o caso 2 explicava, o algoritmo reconheceu 0 e o multiploca por 1.8 e depois soma mais 32, e depois retorna a seguinte mensagem: A  temperatura do user { k ==> 8 graus celcius } convertida para fahrenheit é 46 fahrenheit"
+
+No terceiro resultado aconteceu exatamente como o caso 3 explicava, o algoritmo reconheceu 0 e o multiploca por 1.8 e depois soma mais 32, e depois retorna a seguinte mensagem:"A  temperatura do user { h ==> NaN graus celcius } convertida para fahrenheit é NaN fahrenheit"
+
+No quarto  resultado aconteceu exatamente como o caso 4 explicava, o algoritmo reconheceu 0 e o multiploca por 1.8 e depois soma mais 32, e depois retorna a seguinte mensagem:"A  temperatura do user { j ==> 300 graus celcius } convertida para fahrenheit é 572 fahrenheitt"
+
+No quinto  resultado aconteceu exatamente como o caso 5 explicava, o algoritmo reconheceu 0 e o multiploca por 1.8 e depois soma mais 32, e depois retorna a seguinte mensagem:"A  temperatura do user { j ==> -55 graus celcius } convertida para fahrenheit é -67 fahrenheit
