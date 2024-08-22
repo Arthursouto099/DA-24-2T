@@ -106,6 +106,9 @@
 
 // console.log("Sua idade é maior que a do seu amigo?:" + "" + maiorOuMenor)
 
+// let diferenca = idade - idadeDoAmigo
+// console.log(diferenca)
+
 // Desafio 4 
 
 // var numeroDoUser = Number(prompt("digite um numero par: "))
