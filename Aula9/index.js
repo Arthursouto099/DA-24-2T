@@ -107,16 +107,28 @@
 //     console.table(tarefas)
 // }
 
-// const realizarDelete = prompt("escolha umas das 3 tarefas para apagar: 1/ 2/ 3")
+//const realizarDelete = prompt("escolha umas das 3 tarefas para apagar: 1/ 2/ 3")
 
 
-// apagarTarefa(realizarDelete)
+//apagarTarefa(realizarDelete)
 
-
+// Desafio
 const frase = prompt("digite sua frase: ")
 
 const palavras = frase.split(' ')
 console.log(palavras) 
 
-const frutas = ["Banana", "Morango", "Abacaxi", "Laranja", "Ameixa"]
+const frutas = ["Banana", "Morango", "Abacaxi", "Laranja", "Ameixa"] 
 
+
+const frutaDoUser = prompt("digite sua fruta: ")
+
+const indice = frutas.indexOf(frutaDoUser)
+if(indice !== -1) {
+console.log(`O indice da sua fruta é ${indice}: ${frutas[indice]}`)
+}
+else{console.log("O item não etsá presente na lista")}
+
+
+
+console.table(frutas)
