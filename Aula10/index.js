@@ -182,7 +182,7 @@
 //     alert("é uma baita de uma triste noticia mas o candidato " + nome + " não passou")
 // }
 
-const escolhaComputador = Math.floor(Math.random() * 5 + 1)
+const escolhaComputador = Math.floor(Math.random() * 3 + 1)
 
 
 let tentativaDoComputador = []
@@ -203,21 +203,50 @@ switch (escolhaComputador) {
             tentativaDoComputador.push("TESOURA")
         }
 
-    case 4:
-        if (tentativaDoComputador.length === 0) {
-            tentativaDoComputador.push("LAGARTO")
-        }
+    // case 4:
+    //     if (tentativaDoComputador.length === 0) {
+    //         tentativaDoComputador.push("LAGARTO")
+    //     }
 
-    case 5:
-        if (tentativaDoComputador.length === 0) {
-            tentativaDoComputador.push("SPOCK")
-        }
+    // case 5:
+    //     if (tentativaDoComputador.length === 0) {
+    //         tentativaDoComputador.push("SPOCK")
+    //     }
 
 }
 
 
-const tentativaDoUser = prompt("ESCOLHA: ").toUpperCase()
+ const tentativaDoUser = prompt("ESCOLHA: ").toUpperCase()
 
+
+if(tentativaDoComputador[0] === "PEDRA" && tentativaDoUser === "PAPEL" ) {
+    console.log(tentativaDoComputador[0])
+    alert("você ganhou a partida!!!")
+}
+
+else if(tentativaDoComputador[0] === "PAPEL" && tentativaDoUser === "PEDRA") {
+    console.log(tentativaDoComputador[0])
+    alert("o computador ganhou")
+}
+   
+else if(tentativaDoComputador[0] === "TESOURA" && tentativaDoUser === "PEDRA") { 
+    console.log(tentativaDoComputador[0])
+    alert("Você ganhou")
+}
+
+else if(tentativaDoComputador[0] === "PEDRA" && tentativaDoUser === "TESOURA") {
+    console.log(tentativaDoComputador[0])
+    alert("o computador ganhou")
+}
+
+else if(tentativaDoComputador[0] === "TESOURA" && tentativaDoUser === "PAPEL") {
+    console.log(tentativaDoComputador[0])
+    alert("o computador ganhou")
+}
+
+else {
+    alert("Passou")
+}
 
 
 console.log(tentativaDoComputador)
