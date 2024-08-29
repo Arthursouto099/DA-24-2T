@@ -203,15 +203,15 @@ switch (escolhaComputador) {
             tentativaDoComputador.push("TESOURA")
         }
 
-    // case 4:
-    //     if (tentativaDoComputador.length === 0) {
-    //         tentativaDoComputador.push("LAGARTO")
-    //     }
+    case 4:
+        if (tentativaDoComputador.length === 0) {
+            tentativaDoComputador.push("LAGARTO")
+        }
 
-    // case 5:
-    //     if (tentativaDoComputador.length === 0) {
-    //         tentativaDoComputador.push("SPOCK")
-    //     }
+    case 5:
+        if (tentativaDoComputador.length === 0) {
+            tentativaDoComputador.push("SPOCK")
+        }
 
 }
 
@@ -242,6 +242,81 @@ else if(tentativaDoComputador[0] === "PEDRA" && tentativaDoUser === "TESOURA") {
 else if(tentativaDoComputador[0] === "TESOURA" && tentativaDoUser === "PAPEL") {
     console.log(tentativaDoComputador[0])
     alert("o computador ganhou")
+}
+
+else if(tentativaDoComputador[0] === "PAPEL" && tentativaDoUser === "TESOURA") {
+    alert("Você ganhou")
+    console.log(tentativaDoComputador[0])
+} 
+
+else if(tentativaDoComputador[0] === "LAGARTO"  && tentativaDoUser === "PAPEL" ) {
+    alert("o computador ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "PAPEL" && tentativaDoUser === "LAGARTO") {
+    alert("você ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "LAGARTO" && tentativaDoUser === "SPOCK") {
+    alert("o computador ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "SPOCK" && tentativaDoUser === "LAGARTO") {
+    alert("você ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "PEDRA" && tentativaDoUser === "LAGARTO") {
+    alert("Computador ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "LAGARTO" && tentativaDoUser === "PEDRA") {
+    alert("você ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "TESOURA" && tentativaDoUser === "LAGARTO") {
+    alert("comptador ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "LAGARTO" && tentativaDoUser === "TESOURA") {
+    alert("você ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "SPOCK" && tentativaDoUser === "PAPEL") {
+    alert("você ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "PAPEL" && tentativaDoUser === "SPOCK") {
+    alert("O computador ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "PEDRA" && tentativaDoUser === "SPOCK") {
+    alert("Você ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "SPOCK" && tentativaDoUser === "PEDRA") {
+    alert("O comptador ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "SPOCK"  && tentativaDoUser === "PAPEL" ) {
+    alert("o computador ganhou")
+    console.log(tentativaDoComputador[0])
+}
+
+else if(tentativaDoComputador[0] === "PAPEL" && tentativaDoUser === "SPOCK") {
+    alert("você ganhou")
+    console.log(tentativaDoComputador[0])
 }
 
 else {
