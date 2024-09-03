@@ -1,4 +1,4 @@
- const rl = require("readline-sync")
+//  const rl = require("readline-sync")
 
 
 // let i = 0
@@ -65,17 +65,17 @@
 
 // console.log(numeroMaior)
 
-// const arrayDouser = []
-// let alternativa = true
+const arrayDouser = []
+let alternativa = true
 
-// while(alternativa === true) {
-//     const numeroDoUser = Number(rl.question("Digite seu numero: "))
-//     arrayDouser.push(numeroDoUser)
-//     const pergunta = String(rl.question("deseja finalizar o programa? "))
-//     if(pergunta.toUpperCase() === "SIM") {
-//         alternativa = false
-//     }
-// }
+while(alternativa === true) {
+    const numeroDoUser = Number(rl.question("Digite seu numero: "))
+    arrayDouser.push(numeroDoUser)
+    const pergunta = String(rl.question("deseja finalizar o programa? "))
+    if(pergunta.toUpperCase() === "SIM") {
+        alternativa = false
+    }
+}
 
 // console.log(arrayDouser)
 
@@ -91,7 +91,7 @@
 // console.log(`A soma dos numeros pares são: ${soma}`)
 
 
-let mensagens = ["oi", "sumido", 'tudo', "bem?"]
+// let mensagens = ["oi", "sumido", 'tudo', "bem?"]
 
 // let frase = ""
 // for(let mensagem of mensagens) {
@@ -111,13 +111,3 @@ let mensagens = ["oi", "sumido", 'tudo', "bem?"]
 
 // console.log(soma)
 
-let palavrasMaisLongas =[mensagens[0]]
-
-
-for(let palavra of mensagens) {
-    if(palavrasMaisLongas[0].length < palavra.length) {
-        palavrasMaisLongas.push(palavra)
-    }
-}
-
-console.log(palavrasMaisLongas)
