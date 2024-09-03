@@ -187,19 +187,11 @@ let recursos = 0
 
 
 condicao = true
+rodadas = 0
 
 while (condicao === true) {
 
-    
-    
-
-
-
     let decisaoDoUser = String(prompt("Você deseja EXPLORAR ou DESCANSAR ?: ")).toUpperCase()
-
-
-
-
     if (decisaoDoUser === "DESCANSAR") {
         vida = vida + 1
         alert(`sua vida é de ${vida}hp`)
@@ -220,6 +212,7 @@ while (condicao === true) {
             if (vida === 0) {
                 condicao = false
                 alert("você morreu")
+                alert(`Você jogou por ${rodadas} rodadas`)
             }
         }
 
@@ -230,6 +223,7 @@ while (condicao === true) {
             if (recursos === 10) {
                 condicao = false 
                 alert("você conseguiu 10 recursos, você venceu")
+                alert(`Você jogou por ${rodadas} rodadas`)
             }
 
 
@@ -248,5 +242,7 @@ while (condicao === true) {
 
 
     }
+
+    rodadas++
 
 }
