@@ -140,17 +140,26 @@ function determinaMonstra(nomeDoPesquisador, experiencia) {
 const lobo = ["TRANSFORMA COM A LUA CHEIA"]
 const vampiro = ["TEM PELE GELADA"]
 const humano = ["NORMAL"]
+const criatura = [lobo, vampiro, humano]
 
 
-const numeroSorteado = Math.floor(Math.random() * 9)
+const numeroSorteado = Math.floor(Math.random() * criatura.length + 1)
 
 function novato(numero) {
     for(let i = 0; i < numero; i++) {
-        alert(`você tem ${numero} tentativas`)
-        const pergunta = prompt("Você Possui alguma caracteristica da criatura?: ") 
+       console.log(`você tem ${numero} tentativas`)
+        const aleatorio =  criatura[numeroSorteado]
 
-        if(lobo.includes(pergunta)) {
-           alert("Sua Criatura é um Lobo")
+        if(aleatorio ===  criatura[0]) {
+           console.log("SUA CRIATURA É UM LOBO")
+        }
+
+        else if(aleatorio ===  criatura[1]) {
+           console.log("Sua criatura é um vampiro")
+        }
+
+        else {
+           console.log("Humano")
         }
 
     }
@@ -159,8 +168,8 @@ function novato(numero) {
 
 
 if(experiencia = 1) {
-    alert("Como Sua Experiencia É level " + experiencia + " você tera mais dificuldade em acertar acertar a criatura.")
-    novato(numeroSorteado)
+   console.log("Como Sua Experiencia É level " + experiencia + " você tera mais dificuldade em acertar acertar a criatura.")
+    novato(1)
     
 }
 
