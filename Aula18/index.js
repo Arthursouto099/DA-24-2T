@@ -170,18 +170,18 @@
 // Desafio 3
 
 
-// const t1 = {nome: "Churrasco", tipo: "Tradição", anoDeInicio: "século XVII", descricao: "Talvez a tradição mais conhecida dos gaúchos. É também a principal culinária típica. O churrasco – de preferência assado em espetos – tem origem indígena. Antes da chegada dos colonizadores, os povos guaranis já tinham o costume de abrir buracos no chão e assar carnes com o auxílio de pedras e grelhas de madeira verde.", saudar: () => console.log(`${t1.nome}, Masssss bahhhh tche`)}
+const t1 = {nome: "Churrasco", tipo: "Tradição", anoDeInicio: "século XVII", descricao: "Talvez a tradição mais conhecida dos gaúchos. É também a principal culinária típica. O churrasco – de preferência assado em espetos – tem origem indígena. Antes da chegada dos colonizadores, os povos guaranis já tinham o costume de abrir buracos no chão e assar carnes com o auxílio de pedras e grelhas de madeira verde.", saudar: () => console.log(`${t1.nome}, Masssss bahhhh tche`)}
 
-// const t2 = {nome: "Chimarrão", tipo: "Tradição", anoDeInicio: "século XVI,", descricao: 
-//    " Dia do chimarrão: de onde surgiu a bebida, benefícios e como O chimarrão é uma bebida à base de erva-mate, originária do sul do Brasil, transmitida pelos jesuítas que a incentivaram visando afastar o consumo do álcool. Originária dos índios Guaranis, a bebida possui diversos benefícios e é consumido quente em uma cuia, com erva-mate moída e água morna.", saudar: () => console.log(`${t2.nome}, Chimarrão bem bagual`)}  
+const t2 = {nome: "Chimarrão", tipo: "Tradição", anoDeInicio: "século XVI,", descricao: 
+   " Dia do chimarrão: de onde surgiu a bebida, benefícios e como O chimarrão é uma bebida à base de erva-mate, originária do sul do Brasil, transmitida pelos jesuítas que a incentivaram visando afastar o consumo do álcool. Originária dos índios Guaranis, a bebida possui diversos benefícios e é consumido quente em uma cuia, com erva-mate moída e água morna.", saudar: () => console.log(`${t2.nome}, Chimarrão bem bagual`)}  
 
-// const t3 = {nome: "Bento Gonçalves da Silva", tipo: "Personagem", anoDeInicio: 1788, descricao: "Bento Gonçalves da Silva (Triunfo, 23 de setembro de 1788 – Pedras Brancas, 18 de julho de 1847) foi um militar brasileiro, um dos líderes da Revolução Farroupilha, que buscava a independência da província do Rio Grande do Sul do Império do Brasil. Ele foi o primeiro presidente da República Rio-Grandense e uma das figuras mais importantes da história do Rio Grande do Sul.", saudar: () => console.log(`${t3.nome}, (Triunfo, 23 de setembro de 1788 – Pedras Brancas, 18 de julho de 1847) foi um militar brasileiro, um dos líderes da Revolução Farroupilha, que buscava a independência da província do Rio Grande do Sul do Império do Brasil.`) }
+const t3 = {nome: "Bento Gonçalves da Silva", tipo: "Personagem", anoDeInicio: 1788, descricao: "Bento Gonçalves da Silva (Triunfo, 23 de setembro de 1788 – Pedras Brancas, 18 de julho de 1847) foi um militar brasileiro, um dos líderes da Revolução Farroupilha, que buscava a independência da província do Rio Grande do Sul do Império do Brasil. Ele foi o primeiro presidente da República Rio-Grandense e uma das figuras mais importantes da história do Rio Grande do Sul.", saudar: () => console.log(`${t3.nome}, (Triunfo, 23 de setembro de 1788 – Pedras Brancas, 18 de julho de 1847) foi um militar brasileiro, um dos líderes da Revolução Farroupilha, que buscava a independência da província do Rio Grande do Sul do Império do Brasil.`) }
 
-// const rioGrande = [t1, t2, t3]
+const rioGrande = [t1, t2, t3]
 
-// function exibirTradicao(arrayDeTradicoes) {
-//     arrayDeTradicoes.forEach(tradicao => tradicao.saudar())
-// }
+function exibirTradicao(arrayDeTradicoes) {
+    arrayDeTradicoes.forEach(tradicao => tradicao.saudar())
+}
 
 
-// exibirTradicao(rioGrande)
+exibirTradicao(rioGrande)
