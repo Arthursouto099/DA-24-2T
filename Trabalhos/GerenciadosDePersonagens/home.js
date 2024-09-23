@@ -1,109 +1,73 @@
 const rl = require("readline-sync")
 
+const model = {
+    nome: "",
+    classe: "",
+    hp: 100,
+    habilidades: [],
+    acoes: [],
+    // método  para atacar
+    atacar: function () {
+        console.log(`ESTÁ ATACANDO`)
+        this.acoes.push(`${this.nome} está atacando`)
+    },
+    // método  para defender
+    defender: function () {
+        console.log(`ESTÁ DEFEDENDO`)
+        this.acoes.push(`${this.nome} está defendendo`)
+    },
+    // método  para usar ataque especial
+    // uma constante e criada a partir do método random que gera um numero "semi aleatorio"
+    // com base nisso, usa de indice para escolher umas da habilidades especiais aleatoriamente 
+    usarHabilidadeEspecial: function () {
+        const numeroAleatorio = Math.floor(Math.random() * this.habilidades.length)
+        console.log(`USOU A HABILIDADE ESPECIAL  ${this.habilidades[numeroAleatorio]}`)
+        this.acoes.push(`${this.nome} usou a habilidade ${this.habilidades[numeroAleatorio]}`)
+    }
+}
 
 // array de objtos para guardar os personagens
 const personagens = [
     //Objeto padrão para ser copiado
-    {
-        nome: "Tavares",
-        classe: "Guerreiro",
-        hp: 100,
-        habilidades: ["Força Suprema", "Magia", "Voar"],
-        acoes: ["Personagem Defendeu"],
-        // método  para atacar
-        atacar: function () {
-            console.log(`${this.nome} está atacando`)
-            this.acoes.push(`${this.nome} está atacando`)
-        },
-        // método  para defender
-        defender: function () {
-            console.log(`${this.nome} está defendendo`)
-            this.acoes.push(`${this.nome} está defendendo`)
-        },
-        // método  para usar ataque especial
-        // uma constante e criada a partir do método random que gera um numero "semi aleatorio"
-        // com base nisso, usa de indice para escolher umas da habilidades especiais aleatoriamente 
-        usarHabilidadeEspecial: function () {
-            const numeroAleatorio = Math.floor(Math.random() * this.habilidades.length)
-            console.log(`${this.nome} usou a habilidade especial ${this.habilidades[numeroAleatorio]}`)
-            this.acoes.push(`${this.nome} usou a habilidade ${this.habilidades[numeroAleatorio]}`)
-        }
+    // {
+    //     nome: "Tavares",
+    //     classe: "Guerreiro",
+    //     hp: 100,
+    //     habilidades: ["Força Suprema", "Magia", "Voar"],
+    //     acoes: ["Personagem Defendeu"],
+    //     // método  para atacar
+    //     atacar: function () {
+    //         console.log(`VOCÊ ESTÁ ATACANDO`)
+    //         this.acoes.push(`${this.nome} está atacando`)
+    //     },
+    //     // método  para defender
+    //     defender: function () {
+    //         console.log(`VOCÊ ESTÁ DEFEDENDO`)
+    //         this.acoes.push(`${this.nome} está defendendo`)
+    //     },
+    //     // método  para usar ataque especial
+    //     // uma constante e criada a partir do método random que gera um numero "semi aleatorio"
+    //     // com base nisso, usa de indice para escolher umas da habilidades especiais aleatoriamente 
+    //     usarHabilidadeEspecial: function () {
+    //         const numeroAleatorio = Math.floor(Math.random() * this.habilidades.length)
+    //         console.log(`VOCÊ USOU A HABILIDADE ESPECIAL  ${this.habilidades[numeroAleatorio]}`)
+    //         this.acoes.push(`${this.nome} usou a habilidade ${this.habilidades[numeroAleatorio]}`)
+    //     }
 
 
-    },
+    // },
 
-    {
-        nome: "Java",
-        classe: "Mago",
-        hp: 100,
-        habilidades: ["Controle da força", "Magia", "Magias de mago muito louca"],
-        acoes: ["Personagem Defendeu"],
-        atacar: function () {
-            console.log(`${this.nome} está atacando`)
-            this.acoes.push(`${this.nome} está atacando`)
-        },
-        defender: function () {
-            console.log(`${this.nome} está defendendo`)
-            this.acoes.push(`${this.nome} está defendendo`)
-        },
-        usarHabilidadeEspecial: function () {
-            const numeroAleatorio = Math.floor(Math.random() * this.habilidades.length)
-            console.log(`${this.nome} usou a habilidade especial ${this.habilidades[numeroAleatorio]}`)
-            this.acoes.push(`${this.nome} usou a habilidade ${this.habilidades[numeroAleatorio]}`)
+    {...model, nome: "Tavares", class: "Guerreiro", hp: 100, habilidades: ["Força Suprema", "Magia", "Voar"], acoes: [] },
 
-        }
+    {...model, nome: "Java", classe: "Mago", hp: 100, habilidades: ["magia", "fogo"], acoes: []}
 
-
-    }
+    
 ]
 // Array para armazenar os objetos de personagens
 
 
-// funcão que encontra o index do Personagem que o usuario insere o nome, e usa o método atacar
-function atacar() {
-    console.log("____Personagens Disponíveis____\n")
-    personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
-    console.log("-------------------------------------------------------------")
-    const escolha = rl.question("Escolha o personagem no qual você deseja usar o ataque: ")
-    for (let personagem of personagens) {
-        if (personagem.nome === escolha) {
-            const index = personagens.indexOf(personagem)
-            personagens[index].atacar()
-        }
-    }
-}
 
-// funcão que encontra o index do Personagem que o usuario insere o nome, e usa o método usarHablidadeEspecial
-function atacarEspecial() {
-    console.log("____Personagens Disponíveis____\n")
-    personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
-    console.log("-------------------------------------------------------------")
-    const escolha = rl.question("Escolha o personagem no qual você deseja usar o ataque: ")
-    for (let personagem of personagens) {
-        if (personagem.nome === escolha) {
-            const index = personagens.indexOf(personagem)
-            personagens[index].usarHabilidadeEspecial()
-        }
-    }
-}
-
-// funcão que encontra o index do Personagem que o usuario insere o nome, e usa o método defender
-function defender() {
-    console.log("____Personagens Disponíveis____\n")
-    personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
-    console.log("-------------------------------------------------------------")
-    const escolha = rl.question("Escolha o personagem que vai usar a defesa: ")
-    for (let personagem of personagens) {
-        if (personagem.nome === escolha) {
-            const index = personagens.indexOf(personagem)
-            personagens[index].defender()
-        }
-    }
-}
-
-
-
-
+// Função para deletar usuario
 function deletarPersonagem() {
     console.log("____Personagens Disponíveis____\n")
     personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
@@ -118,7 +82,7 @@ function deletarPersonagem() {
     }
 }
 
-
+// Função para buscar um personagem especifico
 function buscarPersonagem() {
     console.log("____Personagens Disponíveis____\n")
     personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
@@ -133,7 +97,7 @@ function buscarPersonagem() {
     }
 }
 
-
+// Função para listar o nome de todos os perosnagens
 function listarPersonagens() {
     console.log("Personagens ")
     personagens.forEach(personagem => console.log(`------->  ${personagem.nome}`))
@@ -145,6 +109,30 @@ function listarPersonagens() {
     else {
         console.log("Clique qualquer tecla")
     }
+
+}
+
+// Função para ver as ações de determinado personagem
+function verAcoesPersonagem() {
+    console.log("____Personagens Disponíveis____\n")
+    personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
+    console.log("-------------------------------------------------------------")
+
+    const nomeDoPersonagem = rl.question("Digite o nome do seu personagem: ")
+    const personagem = () => {
+        let personagemEscolhido = undefined
+        for (let personagem of personagens) {
+            if (personagem.nome === nomeDoPersonagem) {
+                const index = personagens.indexOf(personagem)
+                personagemEscolhido = personagens[index]
+            }
+        }
+
+        return personagemEscolhido
+    }
+
+    console.log(personagem().acoes)
+
 
 }
 
@@ -163,7 +151,7 @@ function criarPersonagem() {
         const habilidade = rl.question("Digite uma habilidade do seu Personagem: ")
         console.log(`${habilidade} foi adicionada com sucesso`)
         habilidades.push(habilidade)
-        const desejaContinuar = String(rl.question("Você deseja continuar adicionando habilidades? ")).toLowerCase()
+        const desejaContinuar = String(rl.question("Você deseja continuar adicionando habilidades?  sim/nao ")).toLowerCase()
         if (desejaContinuar === "nao") {
             condicao = false
             console.log(habilidades)
@@ -173,13 +161,14 @@ function criarPersonagem() {
     }
 
 
-    const newObj = { ...personagens[0], nome: nomeDoPersonagem, classe: classeDoPersonagem, hp: hpDoPersonagem, habilidades: habilidades, acoes: historicoDeAcoes }
+    const newObj = { ...model, nome: nomeDoPersonagem, classe: classeDoPersonagem, hp: hpDoPersonagem, habilidades: habilidades, acoes: historicoDeAcoes }
     personagens.push(newObj)
     console.log("Personagem Adicionado com Sucesso!")
     return newObj
 
 }
 
+//Função que simula uma batalha
 function batalha() {
     console.log("____Personagens Disponíveis____\n")
     personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
@@ -226,48 +215,87 @@ function batalha() {
         const dadoDeBatalha = Math.floor(Math.random() * 2)
 
 
-
-
-
-
         if (dadoDeBatalha === 0) {
+            // let dano = 20
+            // console.log(`VEZ DO ${personagemAleatorio().nome}`)
+            // personagemAleatorio().usarHabilidadeEspecial()
+            // console.log(`e causou ${dano} de dano no ${personagem1().nome}`)
+            // console.log(`A vida de ${personagem1().nome} é igual a ${personagem1().hp = personagem1().hp - dano}HP\n`)
+            // rl.question("Clique para avançar\n")
+
+            const escolha = Math.floor(Math.random() * 3)
+             console.log("VEZ DA MAQUINA")
+
+            if (escolha === 2) {
+                let dano = 20
+                personagemAleatorio().usarHabilidadeEspecial()
+                console.log(`A MAQUINA CAUSOU ${dano} DE DANO EM VOCÊ`)
+                console.log(`SUA VIDA É DE ${personagem1().hp = personagem1().hp - dano}HP\n`)
+                rl.question("Clique para avançar\n")
+                if (personagem1().hp <= 0) {
+                    console.log(`VOCÊ FOI DERROTADO !`)
+                    console.log("VOCÊ PERDEU")
+                }
+            }
+            else if (escolha === 1) {
+                personagemAleatorio().defender
+                console.log(`A MAQUINA DEFENDEU O ATAQUE`)
+                console.log(`A MAQUINA NÃO SOFREU DANO\n`)
+            }
+
+            else {
+                let dano = 10
+                personagemAleatorio().atacar()
+                console.log(`A MAQUINA ATACOU VOCÊ E CAUSOU ${dano} DE DANO BRUTO`)
+                console.log(`SUA VIDA É DE ${personagem1().hp = personagem1().hp - dano}HP`)
+                rl.question("Clique para avançar\n")
+                if (personagem1().hp <= 0) {
+                    console.log(`VOCÊ FOI DERROTADO !`)
+                    console.log("VOCÊ PERDEU")
+                }
+            }
+        }
+
+        else {
 
             console.log("1. Atacar")
-            console.log("2. Defender\n")
+            console.log("2. Defender")
+            console.log("3. Ataque Especial\n")
+            
 
             const escolha = String(rl.question("Ecolha uma das opções: ")).toLowerCase()
-
-            if (escolha === "atacar") {
+         
+            console.log("SUA VEZ")
+            if (escolha === "3") {
                 let dano = 20
                 personagem1().usarHabilidadeEspecial()
-                console.log(`e causou ${dano} de dano no ${personagemAleatorio().nome}`)
-                console.log(`A vida de ${personagemAleatorio().nome} é igual a ${personagemAleatorio().hp = personagemAleatorio().hp - dano}HP\n`)
-                rl.question("Clique para avançar")
+                console.log(`VOCÊ CAUSOU ${dano} DE DANO NA MAQUINA`)
+                console.log(`A VIDA DA MAQUINA É IGUAL A ${personagemAleatorio().hp = personagemAleatorio().hp - dano}HP\n`)
+                rl.question("Clique para avançar\n")
                 if (personagemAleatorio().hp <= 0) {
-                    console.log(`${personagemAleatorio().nome} FOI DERROTADO !`)
+                    console.log(`A MAQUINA FOI DERROTADA!`)
                     console.log("VOCÊ GANHOU")
                 }
             }
-            else if (escolha === "defender") {
+            else if (escolha === "2") {
                 personagem1().defender
-                console.log(`${personagem1().nome} Defendeu o Ataque`)
-                console.log(`A vida de ${personagem1().nome} é de ${personagem1().hp} HP\n`)
+                console.log(`VOCÊ DEFENDEU O ATAQUE`)
+                console.log(`VOCÊ NÃO SOFREU DANO\n`)
+            }
+
+            else {
+                let dano = 10
+                personagem1().atacar()
+                console.log(`VOCÊ ATACOU A MAQUINA E CAUSOU ${dano} DE DANO`)
+                console.log(`A VIDA DA MAQUINA É DE ${personagemAleatorio().hp = personagemAleatorio().hp - dano}HP`)
+                rl.question("Clique para avançar\n")
+                if (personagemAleatorio().hp <= 0) {
+                    console.log(`A MAQUINA FOI DERROTADA !`)
+                    console.log("VOCÊ GANHOU")
+                }
             }
 
 
-
-        }
-        else {
-            let dano = 20
-            console.log(`VEZ DO ${personagemAleatorio().nome}`)
-            personagemAleatorio().usarHabilidadeEspecial()
-            console.log(`e causou ${dano} de dano no ${personagem1().nome}`)
-            console.log(`A vida de ${personagem1().nome} é igual a ${personagem1().hp = personagem1().hp - dano}HP\n`)
-            rl.question("Clique para avançar")
-            if (personagem1().hp <= 0) {
-                console.log(`${personagem1().nome} FOI DERROTADO !`)
-                console.log("VOCÊ PERDEU")
-            }
 
         }
     }
@@ -289,11 +317,10 @@ function exbirOpcoes() {
     console.log("1. Criar Personagem")
     console.log("2. Procurar Personagem")
     console.log('3. Listar Personagens')
-    console.log("4. Atacar")
-    console.log("5. Defender")
-    console.log("6. Ataque Especial")
-    console.log("7. Deletar Personagem")
-    console.log("8. Sair")
+    console.log("4. Batalha")
+    console.log("5. Deletar Personagem")
+    console.log("6: Ver Historico de ações do personagem")
+    console.log("7. Sair")
 }
 
 
@@ -313,48 +340,51 @@ function escolherOpcoes() {
                 break
             case 2:
                 console.clear()
-                buscarPersonagem()
+                if(personagens.length > 0) {
+                    buscarPersonagem()
+                }
+                else {
+                    console.log("Não existe nenhum personagem na lista")
+                }
+                
                 rl.question()
                 console.clear()
                 exbirOpcoes()
                 break
             case 3:
                 console.clear()
-                listarPersonagens()
+                if(personagens.length > 0) {
+                    listarPersonagens()
+                }
+                else {
+                    console.log("Não existe nenhum personagem na lista")
+                }
                 rl.question()
                 console.clear()
                 exbirOpcoes()
                 break
             case 4:
                 console.clear()
-                atacar()
+                batalha()
                 rl.question()
                 console.clear()
                 exbirOpcoes()
                 break
             case 5:
                 console.clear()
-                batalha()
-                rl.question()
-                console.clear()
-                exbirOpcoes()
-                break
-            case 6:
-                console.clear()
-                atacarEspecial()
-                rl.question()
-                console.clear()
-                exbirOpcoes()
-                break
-            case 7:
-                console.clear()
                 deletarPersonagem()
                 rl.question()
                 console.clear()
                 exbirOpcoes()
                 break
-
-            case 8:
+            case 6: 
+                console.clear()
+                verAcoesPersonagem()
+                rl.question()
+                console.clear()
+                exbirOpcoes()
+                break
+             case 7:
                 console.clear()
                 condicao = false
                 console.clear()
