@@ -241,6 +241,7 @@ function batalha() {
                 personagemAleatorio().defender
                 console.log(`A MAQUINA DEFENDEU O ATAQUE`)
                 console.log(`A MAQUINA NÃO SOFREU DANO\n`)
+                rl.question("Clique para avançar\n")
             }
 
             else {
@@ -258,6 +259,8 @@ function batalha() {
 
         else {
 
+            console.log("SUA VEZ")
+
             console.log("1. Atacar")
             console.log("2. Defender")
             console.log("3. Ataque Especial\n")
@@ -265,7 +268,7 @@ function batalha() {
 
             const escolha = String(rl.question("Ecolha uma das opções: ")).toLowerCase()
          
-            console.log("SUA VEZ")
+  
             if (escolha === "3") {
                 let dano = 20
                 personagem1().usarHabilidadeEspecial()
@@ -281,6 +284,7 @@ function batalha() {
                 personagem1().defender
                 console.log(`VOCÊ DEFENDEU O ATAQUE`)
                 console.log(`VOCÊ NÃO SOFREU DANO\n`)
+                rl.question("Clique para avançar\n")
             }
 
             else {
