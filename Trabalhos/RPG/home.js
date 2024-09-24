@@ -28,10 +28,13 @@ const model = {
         return 20
     },
     pontuacao: 0,
-    level: 0
+    level: 0,
+    inventario: []
 }
 
 const modelMonster = {nome: "", classe: "", hp: 0, ataque: 0, nivel: 0 }
+
+const modelItem = {nome: "", tipo: "", preco: 0, efeito: () => {} , disponibilidade: true}
 
 // array de objtos para guardar os personagens
 const personagens = [
@@ -78,6 +81,24 @@ const monstros = [
 ]
 // Array para armazenar os objetos de personagens
 
+
+const lojaDeItens = [
+    {...modelItem, nome: "ARMADURA NEGRA", tipo: "ARMADURA", preco: 1000 ,efeito: (perosnagem) => {return perosnagem.defesa + 20} },
+    {...modelItem, nome: "LAMINA NEGRA", tipo: "ARMA", preco: 500, efeito: (personagem) => { return personagem.ataque  = personagem.ataque + 7}},
+    {...modelItem, nome: "CURA SAGRADA", tipo: "CURA", preco: 200, disponibilidade: false}
+
+]
+
+function comprarItens(personagem) {
+ console.table(lojaDeItens)
+ const escolha = rl.question("Digite o nome do item que deseja comprar: ")
+ 
+ 
+}
+
+
+
+comprarItens(personagens[0])
 
 
 // Função para deletar usuario
