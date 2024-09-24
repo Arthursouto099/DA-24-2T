@@ -84,14 +84,26 @@ const monstros = [
 
 const lojaDeItens = [
     {...modelItem, nome: "ARMADURA NEGRA", tipo: "ARMADURA", preco: 1000 ,efeito: (perosnagem) => {return perosnagem.defesa + 20} },
-    {...modelItem, nome: "LAMINA NEGRA", tipo: "ARMA", preco: 500, efeito: (personagem) => { return personagem.ataque  = personagem.ataque + 7}},
+    {...modelItem, nome: "LAMINA NEGRA", tipo: "ARMA", preco: 500, efeito: (personagem) => { return personagem.ataque  = personagem.ataque + 2}},
     {...modelItem, nome: "CURA SAGRADA", tipo: "CURA", preco: 200, disponibilidade: false}
 
 ]
 
 function comprarItens(personagem) {
  console.table(lojaDeItens)
- const escolha = rl.question("Digite o nome do item que deseja comprar: ")
+ const escolha = String(rl.question("Digite o nome do item que deseja comprar: "))
+ let itemEcolhido
+
+ for(let item of lojaDeItens) {
+    if (item.nome === escolha) {
+        itemEcolhido = item
+        itemEcolhido.disponibilidade = false
+     
+    }   
+}
+
+personagem.inventario.push(itemEcolhido)
+
  
  
 }
@@ -257,7 +269,10 @@ function atacarMonstro(personagem ,monstro) {
 
             console.log("1. Atacar")
             console.log("2. Ataque Especial\n")
-            
+            if(p1.inventario.length > 0) {
+                console.log("Usar item")
+                p1.inventario[0].efeito(p1)
+            }
 
             const escolha = String(rl.question("Ecolha uma das opções: ")).toLowerCase()
 
@@ -322,7 +337,7 @@ while(condicao) {
         monstro.hp = hpMonstroOg
     } 
     if(p1.hp !== 0) {
-        xp = 1000
+        xp = xp + 1000
         p1.level = p1.level + 1
     }
     console.clear()
