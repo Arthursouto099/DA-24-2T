@@ -6,6 +6,7 @@ const model = {
     hp: 100,
     defesa: 50,
     ataque: 10,
+    ataqueEspecial: 20,
     habilidades: [],
     acoes: [],
     // método  para atacar
@@ -84,7 +85,7 @@ const monstros = [
 
 const lojaDeItens = [
     {...modelItem, nome: "ARMADURA NEGRA", tipo: "ARMADURA", preco: 1000 ,efeito: (perosnagem) => {return perosnagem.defesa + 20} },
-    {...modelItem, nome: "LAMINA NEGRA", tipo: "ARMA", preco: 500, efeito: (personagem) => { return personagem.ataque  = personagem.ataque + 2}},
+    {...modelItem, nome: "LAMINA NEGRA", tipo: "ARMA", preco: 500, efeito: (personagem) => { return personagem.ataque  = personagem.ataque + 7}},
     {...modelItem, nome: "CURA SAGRADA", tipo: "CURA", preco: 200, disponibilidade: false}
 
 ]
@@ -102,15 +103,23 @@ function comprarItens(personagem) {
     }   
 }
 
-personagem.inventario.push(itemEcolhido)
+if(personagem.pontuacao < itemEcolhido.preco) {
+    console.log("Você não possui dinheiro para comprar esse item")
+}
+
+else {
+    personagem.pontuacao - itemEcolhido.preco
+    personagem.inventario.push(itemEcolhido)
+}
+
 
  
  
 }
 
-
-
 comprarItens(personagens[0])
+
+
 
 
 // Função para deletar usuario
@@ -270,8 +279,10 @@ function atacarMonstro(personagem ,monstro) {
             console.log("1. Atacar")
             console.log("2. Ataque Especial\n")
             if(p1.inventario.length > 0) {
-                console.log("Usar item")
-                p1.inventario[0].efeito(p1)
+                console.log("3. Abrir inventario")
+
+                // console.log("Usar item")
+                // p1.inventario[0].efeito(p1)
             }
 
             const escolha = String(rl.question("Ecolha uma das opções: ")).toLowerCase()
@@ -289,7 +300,7 @@ function atacarMonstro(personagem ,monstro) {
 
             }
 
-            else {
+            else if(escolha === "2") {
                 p1.usarHabilidadeEspecial()
                 monstro.hp = monstro.hp - 20
                 console.log(`VOCÊ CAUSOU ${20} DE DANO NO MONSTRO`)
@@ -300,6 +311,12 @@ function atacarMonstro(personagem ,monstro) {
                     condicao = false
                 }
 
+            }
+
+            else {
+                console.table(p1.inventario)
+                const indice = Number(rl.question("Digite o indice do item: "))
+                p1.inventario[indice].efeito(p1)
             }
         }
     }
@@ -423,8 +440,10 @@ function batalha() {
             if (escolha === 2) {
                 let dano = 20
 
+                
+
                 if(personagem1().defesa > 0) {
-                    personagem1().usarHabilidadeEspecial() 
+                    personagemAleatorio().usarHabilidadeEspecial() 
                     console.log(`VOCÊ RECEBEU ${dano} DE DANO DA MAQUINA`)
                     console.log(`SUA DEFESA É IGUAL A ${personagem1().defesa = personagem1().defesa - dano}HP\n`)
                     rl.question("Clique para avançar\n")
@@ -455,9 +474,9 @@ function batalha() {
             else {
                 let dano = 10
                 if(personagem1().defesa > 0) {
-                    personagem1().atacar() 
+                    personagemAleatorio().atacar() 
                     console.log(`VOCÊ RECEBEU ${dano} DE DANO DA MAQUINA`)
-                    console.log(`SUA DEFESA É IGUAL A ${personagem1().defesa = personagem1().defesa - dano}HP\n`)
+                    console.log(`SUA DEFESA É IGUAL A ${personagem1().defesa = personagem1().defesa - personagem1().ataque}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagem1().defesa <= 0) {
                         console.log(`A MAQUINA QUEBROU SUA DEFESA`)
@@ -469,7 +488,7 @@ function batalha() {
                if(personagem1().defesa <= 0) {
                 personagemAleatorio().atacar()
                 console.log(`A MAQUINA ATACOU VOCÊ E CAUSOU ${dano} DE DANO BRUTO`)
-                console.log(`SUA VIDA É DE ${personagem1().hp = personagem1().hp - dano}HP`)
+                console.log(`SUA VIDA É DE ${personagem1().hp = personagem1().hp - personagemAleatorio().ataque}HP`)
                 rl.question("Clique para avançar\n")
                 if (personagem1().hp <= 0) {
                     console.log(`VOCÊ FOI DERROTADO !`)
@@ -486,18 +505,22 @@ function batalha() {
 
             console.log("1. Atacar")
             console.log("2. Defender")
-            console.log("3. Ataque Especial\n")
+            console.log("3. Ataque Especial")
+            console.log("4. Abrir inventario\n")
             
 
             const escolha = String(rl.question("Ecolha uma das opções: ")).toLowerCase()
-         
+            
+            if(escolha === "4") {
+                console.table(personagem1().inventario)
+                const indice = Number(rl.question("Digite o indice do item: "))
+                personagem1().inventario[indice].efeito(personagem1())
+            }
   
-            if (escolha === "3") {
-                let dano = 20
+             else if (escolha === "3") {
                 if(personagemAleatorio().defesa > 0) {
-                    personagem1().usarHabilidadeEspecial() 
-                    console.log(`VOCÊ CAUSOU ${dano} DE DANO NA DEFESA DA MAQUINA`)
-                    console.log(`A DEFESA DA MAQUINA É IGUAL A ${personagemAleatorio().defesa = personagemAleatorio().defesa - dano}HP\n`)
+                    console.log(`VOCÊ CAUSOU ${personagem1().usarHabilidadeEspecial()} DE DANO NA DEFESA DA MAQUINA`)
+                    console.log(`A DEFESA DA MAQUINA É IGUAL A ${personagemAleatorio().defesa = personagemAleatorio().defesa - personagem1().ataqueEspecial}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagemAleatorio().defesa <= 0) {
                         console.log(`A DEFESA DA MAQUINA FOI QUEBRADA`)
@@ -506,15 +529,16 @@ function batalha() {
                 }
 
                 if(personagemAleatorio().defesa <= 0) {
-                    personagem1().usarHabilidadeEspecial()
-                    console.log(`VOCÊ CAUSOU ${dano} DE DANO NA MAQUINA`)
-                    console.log(`A VIDA DA MAQUINA É IGUAL A ${personagemAleatorio().hp = personagemAleatorio().hp - dano}HP\n`)
+                    console.log(`VOCÊ CAUSOU ${personagem1().usarHabilidadeEspecial()} DE DANO NA  MAQUINA`)
+                    console.log(`A  VIDA DA MAQUINA É IGUAL A ${personagemAleatorio().hp = personagemAleatorio().hp - personagem1().ataqueEspecial}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagemAleatorio().hp <= 0) {
-                        console.log(`A MAQUINA FOI DERROTADA!`)
-                        console.log("VOCÊ GANHOU")
+                        console.log(`A MAQUINA FOI DERROTADA`)
                     }
+                    
                 }
+
+                
               
             }
             else if (escolha === "2") {
@@ -524,12 +548,11 @@ function batalha() {
                 rl.question("Clique para avançar\n")
             }
 
-            else {
-                let dano = 10
+            else if(escolha === "1") {
                 if(personagemAleatorio().defesa > 0) {
                     personagem1().atacar() 
-                    console.log(`VOCÊ CAUSOU ${dano} DE DANO NA DEFESA DA MAQUINA`)
-                    console.log(`A DEFESA DA MAQUINA É IGUAL A ${personagemAleatorio().defesa = personagemAleatorio().defesa - dano}HP\n`)
+                    console.log(`VOCÊ CAUSOU ${personagem1().ataque} DE DANO NA DEFESA DA MAQUINA`)
+                    console.log(`A DEFESA DA MAQUINA É IGUAL A ${personagemAleatorio().defesa = personagemAleatorio().defesa - personagem1().ataque}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagemAleatorio().defesa <= 0) {
                         console.log(`A DEFESA DA MAQUINA FOI QUEBRADA`)
@@ -539,8 +562,8 @@ function batalha() {
 
                 if(personagemAleatorio().defesa <= 0) {
                     personagem1().atacar()
-                    console.log(`VOCÊ ATACOU A MAQUINA E CAUSOU ${dano} DE DANO`)
-                    console.log(`A VIDA DA MAQUINA É DE ${personagemAleatorio().hp = personagemAleatorio().hp - dano}HP`)
+                    console.log(`VOCÊ ATACOU A MAQUINA E CAUSOU ${personagem1().ataque} DE DANO`)
+                    console.log(`A VIDA DA MAQUINA É DE ${personagemAleatorio().hp = personagemAleatorio().hp - personagem1().ataque}HP`)
                     rl.question("Clique para avançar\n")
                     if (personagemAleatorio().hp <= 0) {
                         console.log(`A MAQUINA FOI DERROTADA !`)
@@ -565,6 +588,14 @@ function batalha() {
 }
 
 
+function comprarItemNaLoja() {
+    console.log("Seja bem vindo a loja de itens")
+    const  nomeDoPersonagem = rl.question("Digite o nome do Personagem, para atribuir sua compra: ")
+    const p1 = escolherPersonagem(nomeDoPersonagem)
+
+    comprarItens(p1)
+}
+
 
 
 
@@ -579,7 +610,8 @@ function exbirOpcoes() {
     console.log("5. Deletar Personagem")
     console.log("6: Ver Historico de ações do personagem")
     console.log("7. Jogar")
-    console.log("8. Sair")
+    console.log("8. Loja de itens")
+    console.log("9. Sair")
 }
 
 function exbirOpcoesDeJogo() {
@@ -683,7 +715,13 @@ function escolherOpcoes() {
                 console.clear()
                 exbirOpcoes()
             break
-             case 8:
+            case 8: 
+                console.clear()
+                comprarItemNaLoja()
+                console.clear()
+                exbirOpcoes()
+            break
+             case 9:
                 console.clear()
                 condicao = false
                 console.clear()
