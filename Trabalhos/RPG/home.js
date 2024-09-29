@@ -108,7 +108,7 @@ if(personagem.pontuacao < itemEcolhido.preco) {
 }
 
 else {
-    personagem.pontuacao - itemEcolhido.preco
+    personagem.pontuacao = personagem.pontuacao - itemEcolhido.preco
     personagem.inventario.push(itemEcolhido)
 }
 
@@ -362,7 +362,7 @@ while(condicao) {
 
 }
 
-p1.pontuacao = xp
+p1.pontuacao += xp
 
 
 
