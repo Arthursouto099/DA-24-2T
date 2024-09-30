@@ -33,9 +33,9 @@ const model = {
     inventario: []
 }
 
-const modelMonster = {nome: "", classe: "", hp: 0, ataque: 0, nivel: 0 }
+const modelMonster = { nome: "", classe: "", hp: 0, ataque: 0, nivel: 0 }
 
-const modelItem = {nome: "", tipo: "", preco: 0, efeito: () => {} , disponibilidade: true}
+const modelItem = { nome: "", tipo: "", preco: 0, efeito: () => { }, disponibilidade: true }
 
 // array de objtos para guardar os personagens
 const personagens = [
@@ -68,56 +68,56 @@ const personagens = [
 
     // },
 
-    {...model, nome: "Tavares", class: "Guerreiro", hp: 100, habilidades: ["Força Suprema", "Magia", "Voar"], acoes: [] },
+    { ...model, nome: "Tavares", class: "Guerreiro", hp: 100, habilidades: ["Força Suprema", "Magia", "Voar"], acoes: [] },
 
-    {...model, nome: "Java", classe: "Mago", hp: 100, habilidades: ["magia", "fogo"], acoes: []}
+    { ...model, nome: "Java", classe: "Mago", hp: 100, habilidades: ["magia", "fogo"], acoes: [] }
 
-    
+
 ]
 
 const monstros = [
-    {...modelMonster, nome: "Curupira", classe: "Lenda", hp: 50, ataque: 7, nivel: 1 },
-    {...modelMonster, nome: "Golem", classe: "Guardião", hp: 100, ataque: 9, nivel: 3},
-    {...modelMonster, nome: "Vampiro", classe: "Demonio", hp: 100, ataque: 12, nivel: 5}
+    { ...modelMonster, nome: "Curupira", classe: "Lenda", hp: 50, ataque: 7, nivel: 1 },
+    { ...modelMonster, nome: "Golem", classe: "Guardião", hp: 100, ataque: 9, nivel: 3 },
+    { ...modelMonster, nome: "Vampiro", classe: "Demonio", hp: 100, ataque: 12, nivel: 5 }
 ]
 // Array para armazenar os objetos de personagens
 
 
 const lojaDeItens = [
-    {...modelItem, nome: "ARMADURA NEGRA", tipo: "ARMADURA", preco: 1000 ,efeito: (perosnagem) => {return perosnagem.defesa + 20} },
-    {...modelItem, nome: "LAMINA NEGRA", tipo: "ARMA", preco: 500, efeito: (personagem) => { return personagem.ataque  = personagem.ataque + 7}},
-    {...modelItem, nome: "CURA SAGRADA", tipo: "CURA", preco: 200, disponibilidade: false}
+    { ...modelItem, nome: "ARMADURA NEGRA", tipo: "ARMADURA", preco: 1000, efeito: (perosnagem) => { return perosnagem.defesa + 20 } },
+    { ...modelItem, nome: "LAMINA NEGRA", tipo: "ARMA", preco: 500, efeito: (personagem) => { return personagem.ataque = personagem.ataque + 7 } },
+    { ...modelItem, nome: "CURA SAGRADA", tipo: "CURA", preco: 200, disponibilidade: false }
 
 ]
 
 function comprarItens(personagem) {
- console.table(lojaDeItens)
- const escolha = String(rl.question("Digite o nome do item que deseja comprar: "))
- let itemEcolhido
+    console.table(lojaDeItens)
+    const escolha = String(rl.question("Digite o nome do item que deseja comprar: "))
+    let itemEcolhido
 
- for(let item of lojaDeItens) {
-    if (item.nome === escolha) {
-        itemEcolhido = item
-        itemEcolhido.disponibilidade = false
-     
-    }   
+    for (let item of lojaDeItens) {
+        if (item.nome === escolha) {
+            itemEcolhido = item
+            itemEcolhido.disponibilidade = false
+
+        }
+    }
+
+    if (personagem.pontuacao < itemEcolhido.preco) {
+        console.log("Você não possui dinheiro para comprar esse item")
+    }
+
+    else {
+        personagem.pontuacao - itemEcolhido.preco
+        personagem.inventario.push(itemEcolhido)
+    }
+
+
+
+
 }
 
-if(personagem.pontuacao < itemEcolhido.preco) {
-    console.log("Você não possui dinheiro para comprar esse item")
-}
 
-else {
-    personagem.pontuacao - itemEcolhido.preco
-    personagem.inventario.push(itemEcolhido)
-}
-
-
- 
- 
-}
-
-comprarItens(personagens[0])
 
 
 
@@ -151,7 +151,7 @@ function buscarPersonagem() {
         }
     }
 
-    
+
 }
 
 function escolherPersonagem(personagem) {
@@ -161,7 +161,7 @@ function escolherPersonagem(personagem) {
             console.log(index)
             return personagens[index]
         }
-        
+
     }
 }
 
@@ -230,7 +230,7 @@ function criarPersonagem() {
     }
 
 
-    const newObj = { ...model, nome: nomeDoPersonagem, classe: classeDoPersonagem, hp: hpDoPersonagem ,defesa: defesa, habilidades: habilidades, acoes: historicoDeAcoes }
+    const newObj = { ...model, nome: nomeDoPersonagem, classe: classeDoPersonagem, hp: hpDoPersonagem, defesa: defesa, habilidades: habilidades, acoes: historicoDeAcoes }
     personagens.push(newObj)
     console.log("Personagem Adicionado com Sucesso!")
     return newObj
@@ -244,11 +244,11 @@ function escolherPersonagem(nome) {
             console.log(index)
             return personagens[index]
         }
-        
+
     }
 }
 
-function atacarMonstro(personagem ,monstro) {
+function atacarMonstro(personagem, monstro) {
     const p1 = personagem
     console.log("STATUS DO SEU JOGADOR")
     console.log(`NOME: ${p1.nome}, CLASSE: ${p1.classe}, HP: ${p1.hp}, ATQ: ${p1.ataque}, HABILIDADES: ${p1.habilidades.join("<===>")}\n`)
@@ -259,16 +259,16 @@ function atacarMonstro(personagem ,monstro) {
     console.log("STATUS DO MONSTRO")
     console.log(`Nome: ${monstro.nome}, Hp: ${monstro.hp}, Classe: ${monstro.classe}\n`)
 
-    while(condicao) {
+    while (condicao) {
         const numAleatorio = Math.floor(Math.random() * 3)
-    
-        if(numAleatorio === 0) {
+
+        if (numAleatorio === 0) {
             console.log("VEZ DO MONSTRO")
             p1.hp = p1.hp - monstro.ataque
             console.log(`MONSTRO CAUSOU ${monstro.ataque} DE DANO EM VOCÊ`)
             console.log(`SUA VIDA É DE ${p1.hp}\n`)
             rl.question()
-            if(p1.hp <= 0) {
+            if (p1.hp <= 0) {
                 condicao = false
             }
         }
@@ -278,7 +278,7 @@ function atacarMonstro(personagem ,monstro) {
 
             console.log("1. Atacar")
             console.log("2. Ataque Especial\n")
-            if(p1.inventario.length > 0) {
+            if (p1.inventario.length > 0) {
                 console.log("3. Abrir inventario")
 
                 // console.log("Usar item")
@@ -288,25 +288,25 @@ function atacarMonstro(personagem ,monstro) {
             const escolha = String(rl.question("Ecolha uma das opções: ")).toLowerCase()
 
 
-            if(escolha === "1") {
+            if (escolha === "1") {
                 monstro.hp = monstro.hp - p1.ataque
                 console.log(`VOCÊ CAUSOU ${p1.ataque} DE DANO NO MONSTRO`)
                 console.log(`A VIDA DO MONSTRO É DE ${monstro.hp}HP\n`)
                 rl.question()
-                if(monstro.hp <= 0) {
+                if (monstro.hp <= 0) {
                     console.log("Monstro foi derrotado")
                     condicao = false
                 }
 
             }
 
-            else if(escolha === "2") {
+            else if (escolha === "2") {
                 p1.usarHabilidadeEspecial()
                 monstro.hp = monstro.hp - 20
                 console.log(`VOCÊ CAUSOU ${20} DE DANO NO MONSTRO`)
                 console.log(`A VIDA DO MONSTRO É DE ${monstro.hp}HP\n`)
                 rl.question()
-                if(monstro.hp <= 0) {
+                if (monstro.hp <= 0) {
                     console.log("Monstro foi derrotado")
                     condicao = false
                 }
@@ -329,44 +329,47 @@ function atacarMonstro(personagem ,monstro) {
 
 
 function aumentarPontuação() {
-const nome = rl.question("Digite o nome do personagem que você deseja aumentar a pontuação: ")
-const p1 = escolherPersonagem(nome)
+    console.log("____Personagens Disponíveis____\n")
+    personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
+    console.log("-------------------------------------------------------------")
+    const nome = rl.question("Digite o nome do personagem que você deseja aumentar a pontuação: ")
+    const p1 = escolherPersonagem(nome)
+    const p1HpOg = p1.hp
+
+    let condicao = true
+    let xp = 0
 
 
-let condicao = true
-let xp = 0
+    while (condicao) {
+        const numAleatorio = Math.floor(Math.random() * monstros.length)
+        const monstro = monstros[numAleatorio]
+        const hpMonstroOg = monstro.hp
+        atacarMonstro(p1, monstro)
+
+        const desejaContinuar = rl.question("Deseja continuar? sim/nao ")
+
+        if (desejaContinuar === "nao") {
+            condicao = false
+        }
+
+        p1.hp = p1.hp + 20
+        if (monstro.hp <= 0) {
+            monstro.hp = hpMonstroOg
+        }
+        if (p1.hp !== 0) {
+            xp = xp + 1000
+            p1.level = p1.level + 1
+        }
+        console.clear()
 
 
-while(condicao) {
-    const numAleatorio = Math.floor(Math.random() * monstros.length)
-    const monstro = monstros[numAleatorio]
-    const hpMonstroOg = monstro.hp
-    atacarMonstro(p1, monstro)
-
-    const desejaContinuar = rl.question("Deseja continuar? sim/nao ")
-
-    if(desejaContinuar === "nao") {
-        condicao = false
     }
-    
-    p1.hp = p1.hp + 20
-    if(monstro.hp <=0) {
-        monstro.hp = hpMonstroOg
-    } 
-    if(p1.hp !== 0) {
-        xp = xp + 1000
-        p1.level = p1.level + 1
-    }
-    console.clear()
-  
-
-}
-
-p1.pontuacao = xp
+    p1.hp = p1HpOg
+    p1.pontuacao = xp
 
 
 
-console.log(`Você conseguiu ${xp} de XP`)
+    console.log(`Você conseguiu ${xp} de XP`)
 
 
 }
@@ -412,7 +415,7 @@ function batalha() {
 
     console.log("STATUS DO PERSONAGEM DA MAQUINA")
     console.log(`Nome: ${personagemAleatorio().nome}, Classe: ${personagemAleatorio().classe}, HP: ${personagemAleatorio().hp}, DEFESA: ${personagemAleatorio().defesa} HABILIDADES: ${personagemAleatorio().habilidades.join(" --> ")}\n`)
-    
+
     let vidaOgP1 = personagem1().hp
     let vidaOgPa = personagemAleatorio().hp
     let defOgP1 = personagem1().defesa
@@ -435,34 +438,35 @@ function batalha() {
             // rl.question("Clique para avançar\n")
 
             const escolha = Math.floor(Math.random() * 3)
-             console.log("VEZ DA MAQUINA")
+            console.log("VEZ DA MAQUINA")
 
             if (escolha === 2) {
                 let dano = 20
 
-                
 
-                if(personagem1().defesa > 0) {
-                    personagemAleatorio().usarHabilidadeEspecial() 
+
+                if (personagem1().defesa > 0) {
+                    personagemAleatorio().usarHabilidadeEspecial()
                     console.log(`VOCÊ RECEBEU ${dano} DE DANO DA MAQUINA`)
                     console.log(`SUA DEFESA É IGUAL A ${personagem1().defesa = personagem1().defesa - dano}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagem1().defesa <= 0) {
                         console.log(`A MAQUINA QUEBROU SUA DEFESA`)
                     }
-                    
+
                 }
-                if(personagem1().defesa <= 0) {
+                if (personagem1().defesa <= 0) {
                     personagemAleatorio().usarHabilidadeEspecial()
                     console.log(`A MAQUINA CAUSOU ${dano} DE DANO EM VOCÊ`)
                     console.log(`SUA VIDA É DE ${personagem1().hp = personagem1().hp - dano}HP\n`)
                     rl.question("Clique para avançar\n")
-                    if(personagem1().hp <= 0) {
-                    console.log(`VOCÊ FOI DERROTADO !`)
-                    console.log("VOCÊ PERDEU")
-                   }
+                    if (personagem1().hp <= 0) {
+                        console.log(`VOCÊ FOI DERROTADO !`)
+                        console.log("VOCÊ PERDEU")
+                        break
+                    }
                 }
-                
+
             }
             else if (escolha === 1) {
                 personagemAleatorio().defender
@@ -473,29 +477,31 @@ function batalha() {
 
             else {
                 let dano = 10
-                if(personagem1().defesa > 0) {
-                    personagemAleatorio().atacar() 
+                if (personagem1().defesa > 0) {
+                    personagemAleatorio().atacar()
                     console.log(`VOCÊ RECEBEU ${dano} DE DANO DA MAQUINA`)
                     console.log(`SUA DEFESA É IGUAL A ${personagem1().defesa = personagem1().defesa - personagem1().ataque}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagem1().defesa <= 0) {
                         console.log(`A MAQUINA QUEBROU SUA DEFESA`)
+
                     }
-                    
+
                 }
 
 
-               if(personagem1().defesa <= 0) {
-                personagemAleatorio().atacar()
-                console.log(`A MAQUINA ATACOU VOCÊ E CAUSOU ${dano} DE DANO BRUTO`)
-                console.log(`SUA VIDA É DE ${personagem1().hp = personagem1().hp - personagemAleatorio().ataque}HP`)
-                rl.question("Clique para avançar\n")
-                if (personagem1().hp <= 0) {
-                    console.log(`VOCÊ FOI DERROTADO !`)
-                    console.log("VOCÊ PERDEU")
+                if (personagem1().defesa <= 0) {
+                    personagemAleatorio().atacar()
+                    console.log(`A MAQUINA ATACOU VOCÊ E CAUSOU ${dano} DE DANO BRUTO`)
+                    console.log(`SUA VIDA É DE ${personagem1().hp = personagem1().hp - personagemAleatorio().ataque}HP`)
+                    rl.question("Clique para avançar\n")
+                    if (personagem1().hp <= 0) {
+                        console.log(`VOCÊ FOI DERROTADO !`)
+                        console.log("VOCÊ PERDEU")
+                        break
+                    }
                 }
-               }
-              
+
             }
         }
 
@@ -507,39 +513,40 @@ function batalha() {
             console.log("2. Defender")
             console.log("3. Ataque Especial")
             console.log("4. Abrir inventario\n")
-            
+
 
             const escolha = String(rl.question("Ecolha uma das opções: ")).toLowerCase()
-            
-            if(escolha === "4") {
+
+            if (escolha === "4") {
                 console.table(personagem1().inventario)
                 const indice = Number(rl.question("Digite o indice do item: "))
                 personagem1().inventario[indice].efeito(personagem1())
             }
-  
-             else if (escolha === "3") {
-                if(personagemAleatorio().defesa > 0) {
+
+            else if (escolha === "3") {
+                if (personagemAleatorio().defesa > 0) {
                     console.log(`VOCÊ CAUSOU ${personagem1().usarHabilidadeEspecial()} DE DANO NA DEFESA DA MAQUINA`)
                     console.log(`A DEFESA DA MAQUINA É IGUAL A ${personagemAleatorio().defesa = personagemAleatorio().defesa - personagem1().ataqueEspecial}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagemAleatorio().defesa <= 0) {
                         console.log(`A DEFESA DA MAQUINA FOI QUEBRADA`)
                     }
-                    
+
                 }
 
-                if(personagemAleatorio().defesa <= 0) {
+                if (personagemAleatorio().defesa <= 0) {
                     console.log(`VOCÊ CAUSOU ${personagem1().usarHabilidadeEspecial()} DE DANO NA  MAQUINA`)
                     console.log(`A  VIDA DA MAQUINA É IGUAL A ${personagemAleatorio().hp = personagemAleatorio().hp - personagem1().ataqueEspecial}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagemAleatorio().hp <= 0) {
                         console.log(`A MAQUINA FOI DERROTADA`)
+                        break
                     }
-                    
+
                 }
 
-                
-              
+
+
             }
             else if (escolha === "2") {
                 personagem1().defender
@@ -548,19 +555,19 @@ function batalha() {
                 rl.question("Clique para avançar\n")
             }
 
-            else if(escolha === "1") {
-                if(personagemAleatorio().defesa > 0) {
-                    personagem1().atacar() 
+            else if (escolha === "1") {
+                if (personagemAleatorio().defesa > 0) {
+                    personagem1().atacar()
                     console.log(`VOCÊ CAUSOU ${personagem1().ataque} DE DANO NA DEFESA DA MAQUINA`)
                     console.log(`A DEFESA DA MAQUINA É IGUAL A ${personagemAleatorio().defesa = personagemAleatorio().defesa - personagem1().ataque}HP\n`)
                     rl.question("Clique para avançar\n")
                     if (personagemAleatorio().defesa <= 0) {
                         console.log(`A DEFESA DA MAQUINA FOI QUEBRADA`)
                     }
-                    
+
                 }
 
-                if(personagemAleatorio().defesa <= 0) {
+                if (personagemAleatorio().defesa <= 0) {
                     personagem1().atacar()
                     console.log(`VOCÊ ATACOU A MAQUINA E CAUSOU ${personagem1().ataque} DE DANO`)
                     console.log(`A VIDA DA MAQUINA É DE ${personagemAleatorio().hp = personagemAleatorio().hp - personagem1().ataque}HP`)
@@ -568,9 +575,10 @@ function batalha() {
                     if (personagemAleatorio().hp <= 0) {
                         console.log(`A MAQUINA FOI DERROTADA !`)
                         console.log("VOCÊ GANHOU")
+                        break
                     }
                 }
-               
+
             }
 
 
@@ -582,7 +590,7 @@ function batalha() {
     personagemAleatorio().hp = vidaOgPa
     personagem1().defesa = defOgP1
     personagemAleatorio().defesa = defOgPa
- 
+
 
 
 }
@@ -590,7 +598,10 @@ function batalha() {
 
 function comprarItemNaLoja() {
     console.log("Seja bem vindo a loja de itens")
-    const  nomeDoPersonagem = rl.question("Digite o nome do Personagem, para atribuir sua compra: ")
+    console.log("____Personagens Disponíveis____\n")
+    personagens.forEach(personagem => console.log(`------->  Nome: ${personagem.nome}, Classe: ${personagem.classe}, HP: ${personagem.hp}`))
+    console.log("-------------------------------------------------------------")
+    const nomeDoPersonagem = rl.question("Digite o nome do Personagem, para atribuir sua compra: ")
     const p1 = escolherPersonagem(nomeDoPersonagem)
 
     comprarItens(p1)
@@ -626,25 +637,25 @@ function escolherOpcoesDeJogo() {
     while (condicao) {
         const escolha = Number(rl.question("Digite Sua Opção: "))
 
-        switch(escolha) {
+        switch (escolha) {
             case 1:
                 console.clear()
                 aumentarPontuação()
                 rl.question("Clique qualuqer tecla")
                 console.clear()
                 exbirOpcoesDeJogo()
-            break
+                break
 
-            case 10: 
+            case 10:
                 console.clear()
                 rl.question("Clique qualuqer tecla")
                 escolherOpcoes()
                 console.clear()
-            break
+                break
 
         }
 
-        
+
     }
 }
 
@@ -665,20 +676,20 @@ function escolherOpcoes() {
                 break
             case 2:
                 console.clear()
-                if(personagens.length > 0) {
+                if (personagens.length > 0) {
                     buscarPersonagem()
                 }
                 else {
                     console.log("Não existe nenhum personagem na lista")
                 }
-                
+
                 rl.question()
                 console.clear()
                 exbirOpcoes()
                 break
             case 3:
                 console.clear()
-                if(personagens.length > 0) {
+                if (personagens.length > 0) {
                     listarPersonagens()
                 }
                 else {
@@ -702,7 +713,7 @@ function escolherOpcoes() {
                 console.clear()
                 exbirOpcoes()
                 break
-            case 6: 
+            case 6:
                 console.clear()
                 verAcoesPersonagem()
                 rl.question()
@@ -714,14 +725,14 @@ function escolherOpcoes() {
                 escolherOpcoesDeJogo()
                 console.clear()
                 exbirOpcoes()
-            break
-            case 8: 
+                break
+            case 8:
                 console.clear()
                 comprarItemNaLoja()
                 console.clear()
                 exbirOpcoes()
-            break
-             case 9:
+                break
+            case 9:
                 console.clear()
                 condicao = false
                 console.clear()

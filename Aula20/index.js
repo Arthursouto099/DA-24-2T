@@ -174,10 +174,24 @@ function somaDaMatriz(matriz) {
 }
 
 
+function verificarIndice(linha, coluna) {
+
+    if(batalhaNaval[linha][coluna] !== 0) {
+        return true
+    }
+    else {
+        return false
+    }
+
+
+   
+
+}
+
 function jogar() {
      const somaDaMatrizes = somaDaMatriz(batalhaNaval)
      
-     
+     console.log(somaDaMatrizes)
      
 
 
@@ -186,10 +200,37 @@ function jogar() {
     let condicao = true
 
 
-    // while(condicao) {
+     while(condicao) {
+         const indice1 = Number(rl.question("Digite o indice da linha que você quer: "))
+         const indice2 = Number(rl.question("Digite o indice da coluna que voce quer: "))
+
+         
+        verificarIndice(indice1, indice2) 
+
         
-    // }
+
+        if(verificarIndice(indice1, indice2) === true) {
+            soma += 1
+            console.log("você acertou\n")
+            console.log(soma)
+        }
+
+        if(verificarIndice(indice1, indice2) === false) {
+            console.log("Voce errou")
+            rl.question("Digite qualquer tecla para avançar: \n")
+        }
+
+        if(soma === 6) {
+            condicao = false
+            console.log("Você ganhou")
+        }
+
+
+
+     }
 }
+
+
 
 
 jogar()
