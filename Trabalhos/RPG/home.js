@@ -115,12 +115,6 @@ function comprarItens(personagem) {
 
 
 
-<<<<<<< HEAD
-=======
-else {
-    personagem.pontuacao = personagem.pontuacao - itemEcolhido.preco
-    personagem.inventario.push(itemEcolhido)
->>>>>>> bba96e2882e60a10bfc1394a6df22de261f9ba98
 }
 
 
@@ -369,11 +363,9 @@ function aumentarPontuação() {
         console.clear()
 
 
-    }
-<<<<<<< HEAD
+    
     p1.hp = p1HpOg
     p1.pontuacao = xp
-=======
     
     p1.hp = p1.hp + 20
     if(monstro.hp <=0) {
@@ -386,19 +378,19 @@ function aumentarPontuação() {
     console.clear()
   
 
-}
+
 
 p1.pontuacao += xp
->>>>>>> bba96e2882e60a10bfc1394a6df22de261f9ba98
 
 
 
-    console.log(`Você conseguiu ${xp} de XP`)
+ console.log(`Você conseguiu ${xp} de XP`)
+
 
 
 }
 
-
+}
 
 
 
