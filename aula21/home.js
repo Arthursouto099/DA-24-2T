@@ -201,10 +201,9 @@ function mudarDirecao(direcao) {
    else if(direcao === "baixo") {
     for(let i = 0; i < mapa.length; i++) {
         for(let j = 0; j < mapa[i].length; j++) {
-            if(mapa[i][j] === 3 && i < 9 ) {
-                console.log(i)
+            if(mapa[i][j] === 3) {
                 mapa[i+1][j] = 3
-               
+                mapa[(i + 1) - 1][j] = 0
             }
         }
     }
