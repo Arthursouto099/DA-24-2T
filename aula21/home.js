@@ -16,6 +16,8 @@ function embaralharMatriz(matriz, qtd) {
             matriz[i][nRI] = nRN
         }
     }
+
+    return matriz
 }
 
 
@@ -139,9 +141,10 @@ let jurassic = [
 
 
 
-embaralharMatriz(jurassic, 5)
+const mapa = embaralharMatriz(jurassic, 5)
 
-console.log(jurassic)
+console.log(mapa)
+console.log("--------------------------------------------------------")
 
 const m0 = "grama"
  const m1 = "agua"
@@ -177,44 +180,44 @@ const m0 = "grama"
 function mudarDirecao(direcao) {
 
     if(direcao === "cima") {
-        for(let i = 0; i < jurassic.length; i ++) {
-            for(let j = 0; j < jurassic[i].length; j++) {
-                if(jurassic[i][j] === 3 ) {
-                    if(jurassic[i][j] !== jurassic[0][j] ) {
-                        jurassic[i-1][j+0] = 3
-                        jurassic[i][j] = 0
-                    }
-                   
-                }
+        for(let i = 0; i < mapa.length; i ++) {
+            for(let j = 0; j < mapa[i].length; j++) {
+               if(mapa[i][j] === 3 && i != 0) {
+                    mapa[i - 1][j] = 3
+                    mapa[i][j] = 0
+               }
+
+               else if(mapa[i][j] === 4 && i != 0) {
+                    mapa[i - 1][j] = 4
+                    mapa[i][j] = 0
+               }
     
             }
         }
     }
 
-    else if (direcao === "baixo") {
-        for(let i = 0; i < jurassic.length; i++) {
-            for(let j = 0; j < jurassic[i].length; j++) {
-                if(jurassic[i][j] === 3) {
-                    if(jurassic[i][j] !== jurassic[jurassic.length - 1][j]) {
-                        jurassic[i + 1][j + 0] = 3
-                        if(jurassic[i][j] !== 3) {
-                            jurassic[i][j] = 0
-                        }
-                       
-                    }
-                }
+//   
+
+   else if(direcao === "baixo") {
+    for(let i = 0; i < mapa.length; i++) {
+        for(let j = 0; j < mapa[i].length; j++) {
+            if(mapa[i][j] === 3 && i < 9 ) {
+                console.log(i)
+                mapa[i+1][j] = 3
+               
             }
         }
     }
+   }
 
 
    else if(direcao === "esquerda") {
-    for(let i = 0; i < jurassic.length; i++) {
-        for(let j = 0; j < jurassic[i].length; j++) {
-            if(jurassic[i][j] === 3) {
-                if(jurassic[i][j] !== jurassic[i][0]) {
-                    jurassic[i + 0][j - 1] = 3
-                    jurassic[i][j] = 0
+    for(let i = 0; i < mapa.length; i++) {
+        for(let j = 0; j < mapa[i].length; j++) {
+            if(mapa[i][j] === 3) {
+                if(mapa[i][j] !== mapa[i][0]) {
+                    mapa[i + 0][j - 1] = 3
+               
                 }
             }
         }
@@ -223,7 +226,18 @@ function mudarDirecao(direcao) {
    
 
    else {
-    
+    for(let i = 0; i < mapa.length; i++) {
+        for(let j = 0; j < mapa[i].length; j ++) {
+            if(mapa[i][j] === 3) {
+                if(mapa[i][j] !== mapa[i][9] && mapa[i][j] != mapa[i][4]) {
+                    mapa[i + 0][j + 1] = 3
+                    if(mapa[i][j] === 3) {
+                        mapa[i][j] = 0
+                    }
+                }
+            }
+        }
+    }
    }
 
 
@@ -232,7 +246,8 @@ function mudarDirecao(direcao) {
 }
 
 
+
     
 
-mudarDirecao("cima")
-console.log(jurassic)
+mudarDirecao("baixo")
+console.log(mapa)
