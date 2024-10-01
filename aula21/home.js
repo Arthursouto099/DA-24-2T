@@ -189,7 +189,7 @@ function mudarDirecao(direcao) {
         }
     }
 
-    //
+    
 
     else if (direcao === "baixo") {
         for (let i = mapa.length - 1; i >= 0; i--) {
