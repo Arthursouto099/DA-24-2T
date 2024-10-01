@@ -196,7 +196,7 @@ function mudarDirecao(direcao) {
         }
     }
 
-//   
+//
 
    else if(direcao === "baixo") {
     for(let i = 0; i < mapa.length; i++) {
