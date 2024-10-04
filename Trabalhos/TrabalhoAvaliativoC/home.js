@@ -7,13 +7,13 @@ const objectItensModelTypeCura = { nome: "", efeito: function () { } }
 const objectItensModelTypeDano = { nome: "", efeito: function () { }, dano: 0 }
 
 
-
-const personagens = [{ ...objectPersonagemModel, nome: "Link" }, { ...objectPersonagemModel, nome: "Ganondorf" }]
 const armas = [{ ...objectArmasModel, nome: "Master Sword", alcance: 1 }, { ...objectArmasModel, nome: "Arco", alcance: 3, dano: 1.5 }]
 const itens = [
     { ...objectItensModelTypeDano, nome: "Bomba", dano: 4, efeito: function (inimigo) { return inimigo.coracoes -= this.dano } },
     { ...objectItensModelTypeCura, nome: "Cura", efeito: function (personagem) { if (personagem.coracoes != 6) { return personagem.coracoes += 2 } } }
 ]
+const personagens = [{ ...objectPersonagemModel, nome: "Link", inventario: [armas[0], armas[1]] }, { ...objectPersonagemModel, nome: "Ganondorf" }]
+
 
 
 // Um cuidado, caso algum personagem não poossua alguma propriedade
@@ -196,25 +196,155 @@ function criarPersonagem() {
     }
     const inventario = []
 
-    const p1 = {nome: nome, coracoes: coracoes, forca: forca,  defesa: defesa, inventario: inventario}
+    const p1 = { nome: nome, coracoes: coracoes, forca: forca, defesa: defesa, inventario: inventario }
     personagens.push(p1)
     console.log(p1)
     rl.question("Clique para avançar: ")
     console.clear()
-   
 
-    if(verificarPropriedadesPersonagem() === true) {
+
+
+
+    if (verificarPropriedadesPersonagem() === true) {
         console.log("Personagem adicionado com sucesso")
     }
     else {
         console.log("Algo deu errado")
+        const index = personagens.indexOf(p1)
+        personagens.splice(index, 1)
     }
 
 
 }
 
 
-const n = Number(rl.question("Digite o numero"))
-console.log(n)
-console.log(typeof n)
+
+
 criarPersonagem()
+
+
+function criarArma() {
+    let nome = rl.question("Digite o nome da sua arma: ")
+    while (nome === '') {
+        console.log("É necessario colocar um nome a sua arma!")
+        console.log("...")
+        nome = rl.question("Digite o nome da sua arma ")
+        console.clear()
+    }
+    let dano = Number(rl.question("Digite o dano da sua arma: "))
+    if (dano < 1 || isNaN(dano) === true) {
+        while (true) {
+            if (isNaN(dano) === true) {
+                console.log("É necessario que o dano seja um numero> ")
+            }
+            else {
+                console.log("O dano precisa ser maior que 0")
+            }
+
+            console.log("...")
+            dano = Number(rl.question("Digite o dano da sua arma: "))
+            if (dano > 1 && isNaN(dano) === false) {
+                break
+            }
+            console.clear()
+        }
+
+    }
+
+    let alcance = Number(rl.question("Digite o alcance da sua arma: "))
+    if (alcance < 1 || isNaN(alcance) === true) {
+        while (true) {
+            if (isNaN(alcance) === true) {
+                console.log("É necessario que o alcance seja um numero> ")
+            }
+            else {
+                console.log("O alcance precisa ser maior que 0")
+            }
+
+            console.log("...")
+            alcance = Number(rl.question("Digite o alcance da sua arma: "))
+            if (alcance > 1 && isNaN(alcance) === false) {
+                break
+            }
+            console.clear()
+        }
+
+    }
+
+
+    const newObject = {...objectArmasModel, nome: nome, dano: dano, alcance: alcance}
+    armas.push(newObject)
+    console.log(newObject)
+    console.clear()
+
+    if(verificarPropriedadesArmas() === true) {
+        console.log("Arma adicionado com sucesso")
+    }
+    else {
+        console.log("Ocorreu um erro")
+        const index = armas.indexOf(newObject)
+        armas.slice(index, 1)
+    }
+}
+
+
+criarArma()
+
+
+function criarItem() {
+    let nome = rl.question("Digite o nome do seu item: ")
+    while (nome === '') {
+        console.log("É necessario colocar um nome no seu item!")
+        console.log("...")
+        nome = rl.question("Digite o nome do seu item ")
+        console.clear()
+    }
+
+    let item = undefined
+    
+    const question = rl.question("Qual o tipo do seu item cura/dano: ")
+    
+    if(question.toLowerCase() === "cura") {
+        item = {...objectItensModelTypeCura, nome: nome}
+    }
+    else {
+        let dano = Number(rl.question("Digite o dano do seu item: "))
+        if (dano < 1 || isNaN(dano) === true) {
+            while (true) {
+                if (isNaN(dano) === true) {
+                    console.log("É necessario que o dano seja um numero> ")
+                }
+                else {
+                    console.log("O dano precisa ser maior que 0")
+                }
+    
+                console.log("...")
+                dano = Number(rl.question("Digite o dano do seu item: "))
+                if (dano > 1 && isNaN(dano) === false) {
+                    break
+                }
+                console.clear()
+            }
+    
+        }
+
+        item = {...objectItensModelTypeDano, nome: nome, dano: dano}
+    }
+
+    itens.push(item)
+    console.log(item)
+    console.clear()
+
+    if(verificarPropriedadesItens() === true) {
+        console.log("Item adicionado com sucesso")
+    }
+    else {
+        console.log("Ocorreu um erro")
+        const index = itens.indexOf(item)
+        itens.slice(index, 1)
+    }
+
+   
+}
+
+criarItem()
