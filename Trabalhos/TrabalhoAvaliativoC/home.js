@@ -1,5 +1,6 @@
 const rl = require("readline-sync")
-const numerosNaturais = ["1", "2", "3", '4","5","6","7","8', "9"]
+const alfabeto = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+const caracteriesEspeciais = ["!", "@", "#", "-", "+", "%", "/", "^", "$", "*", "&"]
 
 const objectPersonagemModel = { nome: "", coracoes: 6, forca: 1, defesa: 3, inventario: [] }
 const objectArmasModel = { nome: "", dano: 1, alcance: 0, efeito: function (personagem) { return personagem.forca += this.dano } }
@@ -133,12 +134,69 @@ function verificarPropriedadesItens() {
 
 function criarPersonagem() {
     let nome = rl.question("Digite o nome do seu personagem: ")
-    while (nome === '') {
-        console.log("É necessario colocar um nome ao personagem!")
-        console.log("...")
-        nome = rl.question("Digite o nome do seu personagem: ")
-        console.clear()
+    let contador = 0
+    let contadorDeCaracteries = 0
+    for(let letra of alfabeto) {
+        if(nome.startsWith(letra) === false) {
+            contador += 1
+        }
     }
+
+    caracteriesEspeciais.forEach(c => {
+        if(nome.includes(c) === true) {
+            contadorDeCaracteries += 1
+        }
+
+    })
+
+    if(contador === 26 || contadorDeCaracteries > 0) {
+       
+        while(true) {
+            let contadorDeCaracteries = 0
+            if(nome === "") {
+                console.log("O nome não pode ser vazio")
+            }
+
+            caracteriesEspeciais.forEach(c => {
+                if(nome.includes(c) === true) {
+                    contadorDeCaracteries += 1
+                }
+ 
+            })
+
+             if(contadorDeCaracteries > 0) {
+                console.log("Caracter invalido")
+            }
+
+            else if(contadorDeCaracteries === 0) {
+                console.log("O nome precisa se iniciar com uma letra maiuscula")
+            }
+           
+            contador = 0
+            nome = rl.question("digite o nome do seu personagem: ")
+            for(let letra of alfabeto) {
+                if(nome.startsWith(letra) === false) {
+                    contador += 1
+                }
+            }
+
+            for(let i = 1; i < alfabeto.length; i++) {
+                if(nome.includes(caracteriesEspeciais[i])  === true) {
+                    contador +=1
+
+                }
+            }
+            if(contador < 26) {
+                break
+            }
+
+            console.clear()
+        }
+    }   
+
+    
+
+    
     let coracoes = Number(rl.question("Digite quantos corações o personagem " + nome + " possui: "))
     if (coracoes < 1 || coracoes > 10 || isNaN(coracoes) === true) {
         console.log(coracoes)
@@ -220,30 +278,84 @@ function criarPersonagem() {
 
 
 
-criarPersonagem()
+
 
 
 function criarArma() {
     let nome = rl.question("Digite o nome da sua arma: ")
-    while (nome === '') {
-        console.log("É necessario colocar um nome a sua arma!")
-        console.log("...")
-        nome = rl.question("Digite o nome da sua arma ")
-        console.clear()
+    let contador = 0
+    let contadorDeCaracteries = 0
+    for(let letra of alfabeto) {
+        if(nome.startsWith(letra) === false) {
+            contador += 1
+        }
     }
+
+    caracteriesEspeciais.forEach(c => {
+        if(nome.includes(c) === true) {
+            contadorDeCaracteries += 1
+        }
+
+    })
+
+    if(contador === 26 || contadorDeCaracteries > 0) {
+       
+        while(true) {
+            let contadorDeCaracteries = 0
+            if(nome === "") {
+                console.log("O nome não pode ser vazio")
+            }
+
+            caracteriesEspeciais.forEach(c => {
+                if(nome.includes(c) === true) {
+                    contadorDeCaracteries += 1
+                }
+ 
+            })
+
+             if(contadorDeCaracteries > 0) {
+                console.log("Caracter invalido")
+            }
+
+            else if(contadorDeCaracteries === 0) {
+                console.log("O nome precisa se iniciar com uma letra maiuscula")
+            }
+           
+            contador = 0
+            nome = rl.question("digite o nome do seu personagem: ")
+            for(let letra of alfabeto) {
+                if(nome.startsWith(letra) === false) {
+                    contador += 1
+                }
+            }
+
+            for(let i = 1; i < alfabeto.length; i++) {
+                if(nome.includes(caracteriesEspeciais[i])  === true) {
+                    contador +=1
+
+                }
+            }
+            if(contador < 26) {
+                break
+            }
+
+            console.clear()
+        }
+    }
+
     let dano = Number(rl.question("Digite o dano da sua arma: "))
-    if (dano < 1 || isNaN(dano) === true) {
+    if (dano < 1 || dano > 5 || isNaN(dano) === true) {
         while (true) {
             if (isNaN(dano) === true) {
                 console.log("É necessario que o dano seja um numero> ")
             }
             else {
-                console.log("O dano precisa ser maior que 0")
+                console.log("O dano precisa ser maior que 0 e menor que  6")
             }
 
             console.log("...")
             dano = Number(rl.question("Digite o dano da sua arma: "))
-            if (dano > 1 && isNaN(dano) === false) {
+            if (dano > 1 && isNaN(dano) === false && dano < 6)  {
                 break
             }
             console.clear()
@@ -252,18 +364,18 @@ function criarArma() {
     }
 
     let alcance = Number(rl.question("Digite o alcance da sua arma: "))
-    if (alcance < 1 || isNaN(alcance) === true) {
+    if (alcance < 1 || alcance > 4 || isNaN(alcance) === true) {
         while (true) {
             if (isNaN(alcance) === true) {
                 console.log("É necessario que o alcance seja um numero> ")
             }
             else {
-                console.log("O alcance precisa ser maior que 0")
+                console.log("O alcance precisa ser maior que 0 e menor que 5")
             }
 
             console.log("...")
             alcance = Number(rl.question("Digite o alcance da sua arma: "))
-            if (alcance > 1 && isNaN(alcance) === false) {
+            if (alcance > 1 && isNaN(alcance) === false && alcance < 5) {
                 break
             }
             console.clear()
@@ -288,17 +400,70 @@ function criarArma() {
 }
 
 
-criarArma()
+
 
 
 function criarItem() {
     let nome = rl.question("Digite o nome do seu item: ")
-    while (nome === '') {
-        console.log("É necessario colocar um nome no seu item!")
-        console.log("...")
-        nome = rl.question("Digite o nome do seu item ")
-        console.clear()
+    let contador = 0
+    let contadorDeCaracteries = 0
+    for(let letra of alfabeto) {
+        if(nome.startsWith(letra) === false) {
+            contador += 1
+        }
     }
+
+    caracteriesEspeciais.forEach(c => {
+        if(nome.includes(c) === true) {
+            contadorDeCaracteries += 1
+        }
+
+    })
+
+    if(contador === 26 || contadorDeCaracteries > 0) {
+       
+        while(true) {
+            let contadorDeCaracteries = 0
+            if(nome === "") {
+                console.log("O nome não pode ser vazio")
+            }
+
+            caracteriesEspeciais.forEach(c => {
+                if(nome.includes(c) === true) {
+                    contadorDeCaracteries += 1
+                }
+ 
+            })
+
+             if(contadorDeCaracteries > 0) {
+                console.log("Caracter invalido")
+            }
+
+            else if(contadorDeCaracteries === 0) {
+                console.log("O nome precisa se iniciar com uma letra maiuscula")
+            }
+           
+            contador = 0
+            nome = rl.question("digite o nome do seu personagem: ")
+            for(let letra of alfabeto) {
+                if(nome.startsWith(letra) === false) {
+                    contador += 1
+                }
+            }
+
+            for(let i = 1; i < alfabeto.length; i++) {
+                if(nome.includes(caracteriesEspeciais[i])  === true) {
+                    contador +=1
+
+                }
+            }
+            if(contador < 26) {
+                break
+            }
+
+            console.clear()
+        }
+    }   
 
     let item = undefined
     
@@ -309,18 +474,18 @@ function criarItem() {
     }
     else {
         let dano = Number(rl.question("Digite o dano do seu item: "))
-        if (dano < 1 || isNaN(dano) === true) {
+        if (dano < 1 || isNaN(dano) === true || dano > 6) {
             while (true) {
                 if (isNaN(dano) === true) {
                     console.log("É necessario que o dano seja um numero> ")
                 }
                 else {
-                    console.log("O dano precisa ser maior que 0")
+                    console.log("O dano precisa ser maior que 0 e menor que 7")
                 }
     
                 console.log("...")
                 dano = Number(rl.question("Digite o dano do seu item: "))
-                if (dano > 1 && isNaN(dano) === false) {
+                if (dano > 1 && isNaN(dano) === false && dano < 7) {
                     break
                 }
                 console.clear()
@@ -347,4 +512,55 @@ function criarItem() {
    
 }
 
-criarItem()
+
+
+
+function mostrarOpcoes() {
+    console.log("Zelda Creator")
+    console.log("1 --> Criar Personagem")
+    console.log("2 --> Criar Arma")
+    console.log("3 --> Criar Item")
+    console.log("4 --> Sair")
+}
+
+
+function escolherOpcoes() {
+    mostrarOpcoes()
+    console.log("//////////////////////////////////////////////////////////////////////")
+   
+    let condicao = true
+
+    while(condicao) {
+        const rlQuestion = Number(rl.question("Escolha uma das opções: "))
+        console.clear()
+        switch(rlQuestion) {
+            case 1: 
+                criarPersonagem()
+                rl.question("Digite qualquer tecla: ")
+                console.clear()
+                mostrarOpcoes()
+            break
+            case 2:
+                criarArma()
+                rl.question("Digite qualquer tecla: ")
+                console.clear()
+                mostrarOpcoes()
+            break
+            case 3:
+                criarItem()
+                rl.question("Digite qualquer tecla: ")
+                console.clear()
+                mostrarOpcoes()
+            break
+            case 4:
+                console.clear()
+                condicao = false
+            break
+        } 
+    }
+
+
+    
+}
+
+escolherOpcoes()
