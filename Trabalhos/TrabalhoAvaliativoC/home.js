@@ -444,7 +444,7 @@ function criarItem() {
             }
            
             contador = 0
-            nome = rl.question("digite o nome do seu personagem: ")
+            nome = rl.question("digite o nome do seu Item: ")
             for(let letra of alfabeto) {
                 if(nome.startsWith(letra) === false) {
                     contador += 1
@@ -512,6 +512,108 @@ function criarItem() {
    
 }
 
+function mostrarListas() {
+    const qualLista = rl.question("Digite qual lista você quer ver: personagens/armas/itens ")
+
+    if(qualLista === "personagens") {
+        console.log(personagens)
+    }
+    else if(qualLista === "armas") {
+        console.log(armas)
+    }
+    else if(qualLista === "itens") {
+        console.log(itens)
+    }
+
+    else {
+        console.log("Você não inseriu uma opção valida")
+    }
+}
+
+function adicionarItemAoPersonagem() {
+    
+    let p1 = undefined
+    const acharPersonagem = () => {
+        const p1Name = rl.question("Digite o nome do personagem, no qual deseja adicionar um item: ")
+        for(let personagem of personagens) {
+            if(personagem.nome === p1Name) {
+                p1 = personagem
+            }
+    } 
+    }
+
+    acharPersonagem()
+    
+    while(p1 === undefined) {
+        console.log("Personagem não foi encontrado")
+        acharPersonagem()
+        console.clear()
+    }
+    
+    console.log(p1)
+
+    let itemOuArma = undefined
+
+    const acharItemOuArma = () => {
+        const decisao = String(rl.question("Você deseja adicionar qual tipo de item ao personagem " + p1.nome + " arma/item ")).toLowerCase()
+        if(decisao === "arma") {
+            console.table(armas)
+            const escolha = Number(rl.question("Digite o indice da arma para adiconar: "))
+            if(escolha > armas.length - 1) {
+                console.log("O indice da arma não existe:")
+            }
+            else {
+                itemOuArma = armas[escolha]
+            }
+            
+        }
+
+        else if(decisao === "item") {
+            console.table(itens)
+            const escolha = Number(rl.question("Digite o indice do item para adiconar: "))
+            if(escolha > itens.length - 1) {
+                console.log("O indice do item não existe:")
+            }
+            else {
+                itemOuArma = itens[escolha]
+            }
+        }
+
+        else {
+            console.log("Opção invalida")
+        }
+    }
+
+    acharItemOuArma()
+
+    while(itemOuArma === undefined) {
+        console.log("Ocorreu um erro, tente novamente: ")
+        acharItemOuArma()
+        console.clear()
+    }
+
+
+    let condicaoParaAdiconar = true
+    for(item of p1.inventario) {
+        if(item.nome === itemOuArma.nome) {
+            condicaoParaAdiconar = false
+        }
+    }
+
+    if(condicaoParaAdiconar === true) {
+        p1.inventario.push(itemOuArma)
+        console.log("Item adicionado com sucesso")
+    }
+    else {
+        console.log("Esse item ja está no inventario de " + p1.nome)
+    }
+    
+
+
+    
+}
+
+
 
 
 
@@ -520,7 +622,9 @@ function mostrarOpcoes() {
     console.log("1 --> Criar Personagem")
     console.log("2 --> Criar Arma")
     console.log("3 --> Criar Item")
-    console.log("4 --> Sair")
+    console.log("4 --> Exibir listas")
+    console.log("5 --> Adicionar Item")
+    console.log("6 --> Sair")
 }
 
 
@@ -553,9 +657,22 @@ function escolherOpcoes() {
                 mostrarOpcoes()
             break
             case 4:
+                mostrarListas()
+                rl.question("Digite qualquer tecla: ")
+                console.clear()
+                mostrarOpcoes()
+            break
+            case 5:
+                adicionarItemAoPersonagem()
+                rl.question("Digite qualquer tecla: ")
+                console.clear()
+                mostrarOpcoes()
+            break
+            case 6:
                 console.clear()
                 condicao = false
             break
+            
         } 
     }
 
