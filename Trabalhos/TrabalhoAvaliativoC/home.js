@@ -559,7 +559,7 @@ function adicionarItemAoPersonagem() {
         if(decisao === "arma") {
             console.table(armas)
             const escolha = Number(rl.question("Digite o indice da arma para adiconar: "))
-            if(escolha > armas.length - 1) {
+            if(escolha > armas.length - 1 || escolha < 0) {
                 console.log("O indice da arma não existe:")
             }
             else {
@@ -571,7 +571,7 @@ function adicionarItemAoPersonagem() {
         else if(decisao === "item") {
             console.table(itens)
             const escolha = Number(rl.question("Digite o indice do item para adiconar: "))
-            if(escolha > itens.length - 1) {
+            if(escolha > itens.length - 1|| escolha < 0) {
                 console.log("O indice do item não existe:")
             }
             else {
