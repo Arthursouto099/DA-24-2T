@@ -57,6 +57,11 @@ const personagens = [
 
     // },
 
+    
+    {...model, nome:"ArthurGay", class: "mago", hp:100, habilidades: ["Magia"], acoes: []},
+
+    {...model, nome: "superNathy", class: "Guerreiro", hp:100, habilidades: ["voar"], acoes: []},
+
     {...model, nome: "Tavares", class: "Guerreiro", hp: 100, habilidades: ["Força Suprema", "Magia", "Voar"], acoes: [] },
 
     {...model, nome: "Java", classe: "Mago", hp: 100, habilidades: ["magia", "fogo"], acoes: []}
